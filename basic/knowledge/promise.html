@@ -1,0 +1,1636 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-cn" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Promise · 不可替代的团队领袖培养计划</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="docker.html" />
+    
+    
+    <link rel="prev" href="git.html" />
+    
+
+    </head>
+    <body>
+        
+<main>
+    <div class="book">
+        <div class="book-body">
+            
+                <div class="body-inner">
+                    
+                        
+
+
+<!--<div class="book-header" role="navigation">
+    
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Promise</a>
+    </h1>
+</div>-->
+
+
+
+
+                        <div class="page-wrapper" role="main">
+                            <div class="page-inner">
+                                
+                                    <section class="normal markdown-section">
+                                    
+                                    <h1 id="promise&#x601D;&#x60F3;">Promise&#x601D;&#x60F3;</h1>
+<p>&#x6539;&#x5584;Callback Hell&#x95EE;&#x9898;</p>
+<h2 id="&#x4EC0;&#x4E48;&#x6837;&#x7684;&#x51FD;&#x6570;&#x9700;&#x8981;&#x6539;&#x5199;&#x6210;promise">&#x4EC0;&#x4E48;&#x6837;&#x7684;&#x51FD;&#x6570;&#x9700;&#x8981;&#x6539;&#x5199;&#x6210;Promise</h2>
+<p>&#x4F8B;1:</p>
+<pre><code class="lang-js">mysql.query(<span class="hljs-string">&apos;SELECT 1 + 1 AS solution&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, rows, fields</span>) </span>{
+  <span class="hljs-keyword">if</span> (err) {
+    <span class="hljs-keyword">throw</span> err;
+  }
+  <span class="hljs-comment">//&#x5BF9;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;</span>
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;The solution is: &apos;</span>, rows[<span class="hljs-number">0</span>].solution);
+});
+</code></pre>
+<p>&#x4F8B;2:</p>
+<pre><code class="lang-js">fs.readFile(<span class="hljs-string">&apos;myfile.txt&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, file</span>) </span>{
+  <span class="hljs-keyword">if</span> (err) {
+    <span class="hljs-keyword">throw</span> err;
+  }
+  <span class="hljs-comment">//&#x5BF9;file&#x8FDB;&#x884C;&#x64CD;&#x4F5C;</span>
+});
+</code></pre>
+<h2 id="callback-hell">Callback Hell</h2>
+<p>&#x4F8B;&#x5B50;:</p>
+<pre><code class="lang-js">mysql.query(sql1, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err1, rows1</span>) </span>{
+  <span class="hljs-keyword">if</span> (err1){
+    <span class="hljs-keyword">throw</span> err1;
+  }
+  mysql.query(sql2,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err2,rows2</span>)</span>{
+    <span class="hljs-keyword">if</span>(err2){
+      <span class="hljs-keyword">throw</span> err2;
+    }
+    <span class="hljs-comment">//&#x5BF9;rows1&#x548C;rows2&#x8FDB;&#x884C;&#x64CD;&#x4F5C;</span>
+
+  });
+});
+</code></pre>
+<p>&#x8FD9;&#x6837;&#x5199;&#x6CD5;&#x7684;&#x95EE;&#x9898;:</p>
+<ol>
+<li>&#x5D4C;&#x5957;&#x592A;&#x591A;,&#x53EF;&#x8BFB;&#x6027;&#x5DEE;</li>
+<li>&#x53D8;&#x91CF;&#x540D;&#x53D7;&#x6C61;&#x67D3;</li>
+<li>&#x5404;&#x4E2A;&#x51FD;&#x6570;&#x4E4B;&#x95F4;&#x7684;&#x5E72;&#x6270;,&#x4E00;&#x4F46;&#x9519;&#x8BEF;&#x53D1;&#x751F;,&#x4E0D;&#x80FD;&#x7EE7;&#x7EED;&#x5411;&#x4E0B;&#x6267;&#x884C;</li>
+</ol>
+<p>&#x7B49;&#x7B49;</p>
+<h2 id="&#x793A;&#x4F8B;&#x4EE3;&#x7801;">&#x793A;&#x4F8B;&#x4EE3;&#x7801;</h2>
+<pre><code class="lang-js"><span class="hljs-meta">&apos;use strict&apos;</span>;
+<span class="hljs-comment">/**
+ * &#x751F;&#x6210;&#x4E00;&#x4E2A;defer&#x5BF9;&#x8C61;
+ * @return {object} Promise&#x5BF9;&#x8C61;
+ */</span>
+<span class="hljs-keyword">let</span> getDefer = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">let</span> deferred = {};
+  deferred.promise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>{
+    deferred.resolve = resolve;
+    deferred.reject = reject;
+  });
+  <span class="hljs-keyword">return</span> deferred;
+};
+
+<span class="hljs-comment">/*
+ * &#x901A;&#x8FC7;getDefer&#x5C01;&#x88C5;Promise
+ */</span>
+<span class="hljs-keyword">let</span> promiseFunc = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">input</span>) </span>{
+  <span class="hljs-keyword">let</span> deferred = getDefer();
+  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">parseInt</span>(input, <span class="hljs-number">10</span>) &lt; <span class="hljs-number">10</span>) {
+    deferred.resolve(input * input);
+  }
+  <span class="hljs-keyword">else</span> {
+    deferred.reject(<span class="hljs-string">&apos;Input Number Too Large&apos;</span>);
+  }
+  <span class="hljs-keyword">return</span> deferred.promise;
+};
+
+promiseFunc(<span class="hljs-number">5</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">result</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(result);<span class="hljs-comment">//25</span>
+}).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(err);<span class="hljs-comment">//&#x4E0D;&#x62A5;&#x9519;</span>
+});
+
+promiseFunc(<span class="hljs-number">15</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">result</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(result);
+}).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(err);<span class="hljs-comment">//&#x62A5;&#x9519;</span>
+});
+
+
+<span class="hljs-comment">/*
+ * &#x94FE;&#x5F0F;&#x5199;&#x6CD5;
+ */</span>
+setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;=============&apos;</span>);
+  promiseFunc(<span class="hljs-number">2</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">val</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Step 1:&apos;</span>, val); <span class="hljs-comment">//val===4</span>
+    <span class="hljs-keyword">return</span> promiseFunc(val);
+  }).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">val</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Step 2:&apos;</span>, val); <span class="hljs-comment">//val===16</span>
+    <span class="hljs-keyword">return</span> promiseFunc(val);
+  }).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">val</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;step 3:&apos;</span>, val); <span class="hljs-comment">//err &#x4E0D;&#x6267;&#x884C;&#x8FD9;&#x53E5;,&#x8DF3;&#x5230;catch,&#x5F80;&#x540E;&#x7684;then&#x5747;&#x4E0D;&#x6267;&#x884C;</span>
+    <span class="hljs-keyword">return</span> promiseFunc(val);
+  }).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">val</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Step 4:&apos;</span>, val);
+    <span class="hljs-keyword">return</span> promiseFunc(val);
+  }).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(err);
+  });
+}, <span class="hljs-number">20</span>);
+
+<span class="hljs-comment">/*
+ * Promise.all
+ * &#x5168;&#x90E8;&#x6267;&#x884C;&#x5B8C;,&#x518D;&#x8FD4;&#x56DE;
+ * (&#x5E38;&#x7528;)
+ */</span>
+setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">Promise</span>.all([promiseFunc(<span class="hljs-number">1</span>), promiseFunc(<span class="hljs-number">2</span>), promiseFunc(<span class="hljs-number">3</span>)]).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">val</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;=============&apos;</span>);
+    <span class="hljs-built_in">console</span>.log(val);<span class="hljs-comment">//[1,4,9]</span>
+  });
+}, <span class="hljs-number">100</span>);
+
+<span class="hljs-comment">/*
+ * Promise.race
+ * &#x8C01;&#x5148;&#x6267;&#x884C;&#x5B8C;,&#x8FD4;&#x56DE;&#x8C01;
+ * (&#x4E0D;&#x5E38;&#x7528;)
+ */</span>
+setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">Promise</span>.race([promiseFunc(<span class="hljs-number">1</span>), promiseFunc(<span class="hljs-number">2</span>), promiseFunc(<span class="hljs-number">3</span>)]).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">val</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;=============&apos;</span>);
+    <span class="hljs-built_in">console</span>.log(val);<span class="hljs-comment">//1</span>
+  });
+}, <span class="hljs-number">100</span>);
+</code></pre>
+<p>&#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>25
+Input Number Too Large
+=============
+Step 1: 4
+Step 2: 16
+Input Number Too Large
+=============
+[ 1, 4, 9 ]
+=============
+1
+</code></pre>
+                                    
+                                    </section>
+                                
+                            </div>
+                        </div>
+                    
+                </div>
+
+                
+                    
+                    <a href="git.html" class="navigation navigation-prev " aria-label="Previous page: GIT">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    
+                    
+                    <a href="docker.html" class="navigation navigation-next " aria-label="Next page: Docker 加速">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    
+                
+            
+        </div>
+
+        <script>
+            var gitbook = gitbook || [];
+            gitbook.push(function() {
+                gitbook.page.hasChanged({"page":{"title":"Promise","level":"2.3.4","depth":2,"next":{"title":"Docker 加速","level":"2.3.5","depth":2,"path":"basic/knowledge/docker.md","ref":"basic/knowledge/docker.md","articles":[]},"previous":{"title":"GIT","level":"2.3.3","depth":2,"path":"basic/knowledge/git.md","ref":"basic/knowledge/git.md","articles":[]},"dir":"ltr"},"config":{"plugins":["addcssjs","-autotheme","-atoc","-fancybox","donate","-github","-disqus","-duoshuo","-edit-link","adsense","-maxiang","wordcount","theme-material","highlight","-lunr","-fontsettings","-sharing","-search","sitemap"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"introduction-text":"封面","fancybox":{},"github":{"url":"https://coding.net/u/willin/p/leader.js.cool/git"},"wordcount":{},"atoc":{"addClass":true,"className":"atoc"},"theme-material":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"adsense":{"client":"ca-pub-5059418763237956","slot":"2139110924","format":"auto","element":".page-inner section"},"addcssjs":{"css":[],"js":["_static/main.js"]},"duoshuo":{"short_name":"leader-js","theme":"default"},"donate":{"alipay":"http://go.sh.gg/images/alipay.png","alipayText":"支付宝打赏","button":"赏","title":"如果您觉得受益，请打赏支持！","wechat":"http://go.sh.gg/images/wx.png","wechatText":"微信打赏"},"fontsettings":{"family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://leader.js.cool/"},"autotheme":{"white":[9,10,11,12,13,14,15,16],"sepia":[6,7,8,17,18,19],"night":[20,21,22,23,0,1,2,3,4,5]},"edit-link":{"base":"https://coding.net/u/willin/p/leader.js.cool/git/edit/master/","label":"编辑此页"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"toc":true,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":true},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"不可替代的团队领袖培养计划","language":"zh-cn","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"作者":"https://willin.wang/","Github":"https://github.com/js-cool/leader.js.cool","Coding":"https://coding.net/u/willin/p/leader.js.cool/git"}},"gitbook":"=3.2.2","description":"Author: Willin Wang"},"file":{"path":"basic/knowledge/promise.md","mtime":"2017-01-05T02:42:35.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-03-06T02:37:48.264Z"},"basePath":"../..","book":{"language":""}});
+            });
+        </script>
+    </div>
+</main>
+
+<aside>
+    <div id="slide-out" class="book-summary side-nav fixed">
+        
+            
+            
+                <div role="navigation">
+                
+
+
+<ul class="summary">
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+
+                
+                    <a href="../../">
+                
+                        
+                        前言
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../COPYRIGHT.html">
+            
+
+                
+                    <a href="../../COPYRIGHT.html">
+                
+                        
+                        版权
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">知识篇</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../osx.html">
+            
+
+                
+                    <a href="../osx.html">
+                
+                        
+                        操作系统(OS X)
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">必备神器</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.2.1" data-path="../resource/brew.html">
+            
+
+                
+                    <a href="../resource/brew.html">
+                
+                        
+                        Brew
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="../resource/iterm.html">
+            
+
+                
+                    <a href="../resource/iterm.html">
+                
+                        
+                        iTerm
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="../resource/ide.html">
+            
+
+                
+                    <a href="../resource/ide.html">
+                
+                        
+                        IDE
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.4" data-path="../resource/ss.html">
+            
+
+                
+                    <a href="../resource/ss.html">
+                
+                        
+                        科学上网
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.5" data-path="../resource/online.html">
+            
+
+                
+                    <a href="../resource/online.html">
+                
+                        
+                        在线资源
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.6" data-path="../resource/offline.html">
+            
+
+                
+                    <a href="../resource/offline.html">
+                
+                        
+                        离线资源
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.7" data-path="../resource/frontend.html">
+            
+
+                
+                    <a href="../resource/frontend.html">
+                
+                        
+                        前端资源
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">基础知识</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.3.1" data-path="http.html">
+            
+
+                
+                    <a href="http.html">
+                
+                        
+                        HTTP
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" data-path="shell.html">
+            
+
+                
+                    <a href="shell.html">
+                
+                        
+                        SHELL
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" data-path="git.html">
+            
+
+                
+                    <a href="git.html">
+                
+                        
+                        GIT
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.3.4" data-path="promise.html">
+            
+
+                
+                    <a href="promise.html">
+                
+                        
+                        Promise
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.5" data-path="docker.html">
+            
+
+                
+                    <a href="docker.html">
+                
+                        
+                        Docker 加速
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">Vanilla JS</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.4.1" data-path="../js/tricks.html">
+            
+
+                
+                    <a href="../js/tricks.html">
+                
+                        
+                        小技巧
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2" data-path="../js/fetch.html">
+            
+
+                
+                    <a href="../js/fetch.html">
+                
+                        
+                        Fetch AJAX
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3" data-path="../js/es.html">
+            
+
+                
+                    <a href="../js/es.html">
+                
+                        
+                        ES Next
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4" data-path="../js/map.html">
+            
+
+                
+                    <a href="../js/map.html">
+                
+                        
+                        Map
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.5" data-path="../js/reduce.html">
+            
+
+                
+                    <a href="../js/reduce.html">
+                
+                        
+                        Reduce
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.6" data-path="../js/regexp.html">
+            
+
+                
+                    <a href="../js/regexp.html">
+                
+                        
+                        正则替换
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">Node.js</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.5.1" data-path="../node/pkg.html">
+            
+
+                
+                    <a href="../node/pkg.html">
+                
+                        
+                        包管理
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.2" data-path="../node/hexo.html">
+            
+
+                
+                    <a href="../node/hexo.html">
+                
+                        
+                        Hexo静态博客搭建
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.3" data-path="../node/gitbook.html">
+            
+
+                
+                    <a href="../node/gitbook.html">
+                
+                        
+                        GitBook静态文档生成
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.4" data-path="../node/babel.html">
+            
+
+                
+                    <a href="../node/babel.html">
+                
+                        
+                        Babel
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.5" data-path="../node/test.html">
+            
+
+                
+                    <a href="../node/test.html">
+                
+                        
+                        Test
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.6" data-path="../node/benchmark.html">
+            
+
+                
+                    <a href="../node/benchmark.html">
+                
+                        
+                        Benchmark
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.7" data-path="../node/npm.html">
+            
+
+                
+                    <a href="../node/npm.html">
+                
+                        
+                        造轮子(NPM)篇
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">DB</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.6.1" data-path="../db/mysql.html">
+            
+
+                
+                    <a href="../db/mysql.html">
+                
+                        
+                        MySQL
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.2" data-path="../db/redis.html">
+            
+
+                
+                    <a href="../db/redis.html">
+                
+                        
+                        Redis
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">常用框架</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.7.1" data-path="../framework/hapi.html">
+            
+
+                
+                    <a href="../framework/hapi.html">
+                
+                        
+                        HAPI
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.2" data-path="../framework/socketio.html">
+            
+
+                
+                    <a href="../framework/socketio.html">
+                
+                        
+                        Socket.IO
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.3" data-path="../framework/electron.html">
+            
+
+                
+                    <a href="../framework/electron.html">
+                
+                        
+                        Electron
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.4" data-path="../framework/udp.html">
+            
+
+                
+                    <a href="../framework/udp.html">
+                
+                        
+                        UDP
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.5" data-path="../framework/koa.html">
+            
+
+                
+                    <a href="../framework/koa.html">
+                
+                        
+                        Koa
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.6" data-path="../framework/vue.html">
+            
+
+                
+                    <a href="../framework/vue.html">
+                
+                        
+                        Vue
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.7" data-path="../framework/redux.html">
+            
+
+                
+                    <a href="../framework/redux.html">
+                
+                        
+                        React Redux
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.8" data-path="../framework/nativescript.html">
+            
+
+                
+                    <a href="../framework/nativescript.html">
+                
+                        
+                        NativeScript
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">算法入门（使用ES 6）</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.8.1" data-path="../algorithm/sum-of-odd-numbers.html">
+            
+
+                
+                    <a href="../algorithm/sum-of-odd-numbers.html">
+                
+                        
+                        奇数求和
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8.2" data-path="../algorithm/find-the-stray-number.html">
+            
+
+                
+                    <a href="../algorithm/find-the-stray-number.html">
+                
+                        
+                        查找杂散数
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">经验篇</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../experience/design/">
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">设计</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="3.1.1" data-path="../../experience/design/requirements.html">
+            
+
+                
+                    <a href="../../experience/design/requirements.html">
+                
+                        
+                        需求分析
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../../experience/design/product.html">
+            
+
+                
+                    <a href="../../experience/design/product.html">
+                
+                        
+                        产品设计
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../../experience/design/architecture.html">
+            
+
+                
+                    <a href="../../experience/design/architecture.html">
+                
+                        
+                        系统架构
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../../experience/design/system.html">
+            
+
+                
+                    <a href="../../experience/design/system.html">
+                
+                        
+                        系统架构设计实践
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../../experience/project/">
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">项目</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="3.2.1" data-path="../../experience/project/structure.html">
+            
+
+                
+                    <a href="../../experience/project/structure.html">
+                
+                        
+                        项目结构
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../../experience/project/develop.html">
+            
+
+                
+                    <a href="../../experience/project/develop.html">
+                
+                        
+                        开发指南
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.3" data-path="../../experience/project/user/module.html">
+            
+
+                
+                    <a href="../../experience/project/user/module.html">
+                
+                        
+                        功能模块设计
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.4" data-path="../../experience/project/user/db.html">
+            
+
+                
+                    <a href="../../experience/project/user/db.html">
+                
+                        
+                        数据库设计
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.5" data-path="../../experience/project/user/cache.html">
+            
+
+                
+                    <a href="../../experience/project/user/cache.html">
+                
+                        
+                        缓存设计
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.6" data-path="../../experience/project/user/bdd.html">
+            
+
+                
+                    <a href="../../experience/project/user/bdd.html">
+                
+                        
+                        BDD实践
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.7" data-path="../../experience/project/user/particulars.html">
+            
+
+                
+                    <a href="../../experience/project/user/particulars.html">
+                
+                        
+                        代码细节处理
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../../experience/operation/">
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">运维</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="3.3.1" data-path="../../experience/operation/server.html">
+            
+
+                
+                    <a href="../../experience/operation/server.html">
+                
+                        
+                        服务器配置
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="../../experience/operation/pm2.html">
+            
+
+                
+                    <a href="../../experience/operation/pm2.html">
+                
+                        
+                        PM2守护进程
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.3" data-path="../../experience/operation/later.html">
+            
+
+                
+                    <a href="../../experience/operation/later.html">
+                
+                        
+                        Later计划任务
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.4" data-path="../../experience/operation/workflow.html">
+            
+
+                
+                    <a href="../../experience/operation/workflow.html">
+                
+                        
+                        CI工作流
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.5" data-path="../../experience/operation/restarter.html">
+            
+
+                
+                    <a href="../../experience/operation/restarter.html">
+                
+                        
+                        重启服务
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.6" data-path="../../experience/operation/rollback.html">
+            
+
+                
+                    <a href="../../experience/operation/rollback.html">
+                
+                        
+                        版本回退
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.7" data-path="../../experience/operation/certbot.html">
+            
+
+                
+                    <a href="../../experience/operation/certbot.html">
+                
+                        
+                        CertBot证书
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">进阶</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="3.4.1" data-path="../../experience/advanced/meta.html">
+            
+
+                
+                    <a href="../../experience/advanced/meta.html">
+                
+                        
+                        元编程构造优雅解决方案
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.2" data-path="../../experience/advanced/desktop-app.html">
+            
+
+                
+                    <a href="../../experience/advanced/desktop-app.html">
+                
+                        
+                        Electron桌面应用
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.3" data-path="../../experience/advanced/mixed-project.html">
+            
+
+                
+                    <a href="../../experience/advanced/mixed-project.html">
+                
+                        
+                        混合Web应用实践
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">思想篇</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">能力</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../mind/capability/define-good-employee.html">
+            
+
+                
+                    <a href="../../mind/capability/define-good-employee.html">
+                
+                        
+                        好员工的定义
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../../mind/capability/growth.html">
+            
+
+                
+                    <a href="../../mind/capability/growth.html">
+                
+                        
+                        新人成长
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../../mind/capability/study.html">
+            
+
+                
+                    <a href="../../mind/capability/study.html">
+                
+                        
+                        学习能力
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../../mind/capability/solving.html">
+            
+
+                
+                    <a href="../../mind/capability/solving.html">
+                
+                        
+                        问题处理能力
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">思维模式</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="4.2.1" data-path="../../mind/thinking/shit.html">
+            
+
+                
+                    <a href="../../mind/thinking/shit.html">
+                
+                        
+                        忽略细节，就是屎
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="../../mind/thinking/dialectical.html">
+            
+
+                
+                    <a href="../../mind/thinking/dialectical.html">
+                
+                        
+                        辩证思维
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="../../mind/thinking/ocd.html">
+            
+
+                
+                    <a href="../../mind/thinking/ocd.html">
+                
+                        
+                        克服强迫症
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.4" data-path="../../mind/thinking/buckets.html">
+            
+
+                
+                    <a href="../../mind/thinking/buckets.html">
+                
+                        
+                        木桶效应
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">团队建设</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="4.3.1" data-path="../../mind/team/hire.html">
+            
+
+                
+                    <a href="../../mind/team/hire.html">
+                
+                        
+                        招聘原则
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../../mind/team/meeting.html">
+            
+
+                
+                    <a href="../../mind/team/meeting.html">
+                
+                        
+                        会议原则
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.3" data-path="../../mind/team/concept.html">
+            
+
+                
+                    <a href="../../mind/team/concept.html">
+                
+                        
+                        人才理念
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+
+    
+
+
+    
+        <li class="divider"></li>
+        
+            <li>
+                <a href="https://willin.wang/" target="_blank" class="custom-link">作者</a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/js-cool/leader.js.cool" target="_blank" class="custom-link">Github</a>
+            </li>
+        
+            <li>
+                <a href="https://coding.net/u/willin/p/leader.js.cool/git" target="_blank" class="custom-link">Coding</a>
+            </li>
+        
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </div>
+            
+        
+    </div>
+    <a href="#" id="top-button" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+</aside>
+
+        
+    
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-adsense/plugin.js"></script>
+        
+    
+
+    
+    <script type="text/javascript" src="../../_static/main.js"></script>
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,1510 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-cn" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>正则替换 · 不可替代的团队领袖培养计划</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="reduce.html" />
+    
+
+    </head>
+    <body>
+        
+<main>
+    <div class="book">
+        <div class="book-body">
+            
+                <div class="body-inner">
+                    
+                        
+
+
+<!--<div class="book-header" role="navigation">
+    
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >正则替换</a>
+    </h1>
+</div>-->
+
+
+
+
+                        <div class="page-wrapper" role="main">
+                            <div class="page-inner">
+                                
+                                    <section class="normal markdown-section">
+                                    
+                                    <h1 id="&#x6B63;&#x5219;&#x66FF;&#x6362;">&#x6B63;&#x5219;&#x66FF;&#x6362;</h1>
+<h2 id="regexp-&#x5BF9;&#x8C61;1">RegExp &#x5BF9;&#x8C61;<sup><a href="#fn_1" id="reffn_1">1</a></sup></h2>
+<blockquote id="fn_1">
+<sup>1</sup>. &#x53C2;&#x8003;&#xFF1A; <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp" target="_blank">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp</a><a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
+</blockquote>
+<p>&#x5DE5;&#x5177;&#xFF1A;</p>
+<ul>
+<li>RegExp tester &#xFF08;Chrome&#x63D2;&#x4EF6;&#xFF09;</li>
+</ul>
+<h2 id="&#x4F8B;&#x9898;2">&#x4F8B;&#x9898;<sup><a href="#fn_2" id="reffn_2">2</a></sup></h2>
+<p>Write a function that accepts an array of 10 integers (between 0 and 9), that returns a string of those numbers in the form of a phone number.</p>
+<p>Example:</p>
+<pre><code>createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // =&gt; returns &quot;(123) 456-7890&quot;
+</code></pre><p>The returned format must be correct in order to complete this challenge. 
+Don&apos;t forget the space after the closing parenthese!</p>
+<blockquote id="fn_2">
+<sup>2</sup>. <a href="https://www.codewars.com/kata/create-phone-number" target="_blank">https://www.codewars.com/kata/create-phone-number</a><a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#x21A9;</a>
+</blockquote>
+<p>&#x7B54;&#x6848;&#xFF1A;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> createPhoneNumber = <span class="hljs-function"><span class="hljs-params">n</span> =&gt;</span> n.join(<span class="hljs-string">&apos;&apos;</span>).replace(<span class="hljs-regexp">/(\d{3})(\d{3})(\d{3})/</span>,<span class="hljs-string">&apos;($1) $2-$3&apos;</span>);
+</code></pre>
+
+                                    
+                                    </section>
+                                
+                            </div>
+                        </div>
+                    
+                </div>
+
+                
+                    
+                    <a href="reduce.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Reduce">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    
+                    
+                
+            
+        </div>
+
+        <script>
+            var gitbook = gitbook || [];
+            gitbook.push(function() {
+                gitbook.page.hasChanged({"page":{"title":"正则替换","level":"2.4.6","depth":2,"next":{"title":"Node.js","level":"2.5","depth":1,"ref":"","articles":[{"title":"包管理","level":"2.5.1","depth":2,"path":"basic/node/pkg.md","ref":"basic/node/pkg.md","articles":[]},{"title":"Hexo静态博客搭建","level":"2.5.2","depth":2,"path":"basic/node/hexo.md","ref":"basic/node/hexo.md","articles":[]},{"title":"GitBook静态文档生成","level":"2.5.3","depth":2,"path":"basic/node/gitbook.md","ref":"basic/node/gitbook.md","articles":[]},{"title":"Babel","level":"2.5.4","depth":2,"path":"basic/node/babel.md","ref":"basic/node/babel.md","articles":[]},{"title":"Test","level":"2.5.5","depth":2,"path":"basic/node/test.md","ref":"basic/node/test.md","articles":[]},{"title":"Benchmark","level":"2.5.6","depth":2,"path":"basic/node/benchmark.md","ref":"basic/node/benchmark.md","articles":[]},{"title":"造轮子(NPM)篇","level":"2.5.7","depth":2,"path":"basic/node/npm.md","ref":"basic/node/npm.md","articles":[]}]},"previous":{"title":"Reduce","level":"2.4.5","depth":2,"path":"basic/js/reduce.md","ref":"basic/js/reduce.md","articles":[]},"dir":"ltr"},"config":{"plugins":["addcssjs","-autotheme","-atoc","-fancybox","donate","-github","-disqus","-duoshuo","-edit-link","adsense","-maxiang","wordcount","theme-material","highlight","-lunr","-fontsettings","-sharing","-search","sitemap"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"introduction-text":"封面","fancybox":{},"github":{"url":"https://coding.net/u/willin/p/leader.js.cool/git"},"wordcount":{},"atoc":{"addClass":true,"className":"atoc"},"theme-material":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"adsense":{"client":"ca-pub-5059418763237956","slot":"2139110924","format":"auto","element":".page-inner section"},"addcssjs":{"css":[],"js":["_static/main.js"]},"duoshuo":{"short_name":"leader-js","theme":"default"},"donate":{"alipay":"http://go.sh.gg/images/alipay.png","alipayText":"支付宝打赏","button":"赏","title":"如果您觉得受益，请打赏支持！","wechat":"http://go.sh.gg/images/wx.png","wechatText":"微信打赏"},"fontsettings":{"family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://leader.js.cool/"},"autotheme":{"white":[9,10,11,12,13,14,15,16],"sepia":[6,7,8,17,18,19],"night":[20,21,22,23,0,1,2,3,4,5]},"edit-link":{"base":"https://coding.net/u/willin/p/leader.js.cool/git/edit/master/","label":"编辑此页"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"toc":true,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":true},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"不可替代的团队领袖培养计划","language":"zh-cn","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"作者":"https://willin.wang/","Github":"https://github.com/js-cool/leader.js.cool","Coding":"https://coding.net/u/willin/p/leader.js.cool/git"}},"gitbook":"=3.2.2","description":"Author: Willin Wang"},"file":{"path":"basic/js/regexp.md","mtime":"2017-02-16T02:02:02.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-03-06T02:37:48.264Z"},"basePath":"../..","book":{"language":""}});
+            });
+        </script>
+    </div>
+</main>
+
+<aside>
+    <div id="slide-out" class="book-summary side-nav fixed">
+        
+            
+            
+                <div role="navigation">
+                
+
+
+<ul class="summary">
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+
+                
+                    <a href="../../">
+                
+                        
+                        前言
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../COPYRIGHT.html">
+            
+
+                
+                    <a href="../../COPYRIGHT.html">
+                
+                        
+                        版权
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">知识篇</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../osx.html">
+            
+
+                
+                    <a href="../osx.html">
+                
+                        
+                        操作系统(OS X)
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">必备神器</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.2.1" data-path="../resource/brew.html">
+            
+
+                
+                    <a href="../resource/brew.html">
+                
+                        
+                        Brew
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="../resource/iterm.html">
+            
+
+                
+                    <a href="../resource/iterm.html">
+                
+                        
+                        iTerm
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="../resource/ide.html">
+            
+
+                
+                    <a href="../resource/ide.html">
+                
+                        
+                        IDE
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.4" data-path="../resource/ss.html">
+            
+
+                
+                    <a href="../resource/ss.html">
+                
+                        
+                        科学上网
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.5" data-path="../resource/online.html">
+            
+
+                
+                    <a href="../resource/online.html">
+                
+                        
+                        在线资源
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.6" data-path="../resource/offline.html">
+            
+
+                
+                    <a href="../resource/offline.html">
+                
+                        
+                        离线资源
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.7" data-path="../resource/frontend.html">
+            
+
+                
+                    <a href="../resource/frontend.html">
+                
+                        
+                        前端资源
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">基础知识</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.3.1" data-path="../knowledge/http.html">
+            
+
+                
+                    <a href="../knowledge/http.html">
+                
+                        
+                        HTTP
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" data-path="../knowledge/shell.html">
+            
+
+                
+                    <a href="../knowledge/shell.html">
+                
+                        
+                        SHELL
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" data-path="../knowledge/git.html">
+            
+
+                
+                    <a href="../knowledge/git.html">
+                
+                        
+                        GIT
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.4" data-path="../knowledge/promise.html">
+            
+
+                
+                    <a href="../knowledge/promise.html">
+                
+                        
+                        Promise
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.5" data-path="../knowledge/docker.html">
+            
+
+                
+                    <a href="../knowledge/docker.html">
+                
+                        
+                        Docker 加速
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">Vanilla JS</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.4.1" data-path="tricks.html">
+            
+
+                
+                    <a href="tricks.html">
+                
+                        
+                        小技巧
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2" data-path="fetch.html">
+            
+
+                
+                    <a href="fetch.html">
+                
+                        
+                        Fetch AJAX
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3" data-path="es.html">
+            
+
+                
+                    <a href="es.html">
+                
+                        
+                        ES Next
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4" data-path="map.html">
+            
+
+                
+                    <a href="map.html">
+                
+                        
+                        Map
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.5" data-path="reduce.html">
+            
+
+                
+                    <a href="reduce.html">
+                
+                        
+                        Reduce
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.4.6" data-path="regexp.html">
+            
+
+                
+                    <a href="regexp.html">
+                
+                        
+                        正则替换
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">Node.js</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.5.1" data-path="../node/pkg.html">
+            
+
+                
+                    <a href="../node/pkg.html">
+                
+                        
+                        包管理
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.2" data-path="../node/hexo.html">
+            
+
+                
+                    <a href="../node/hexo.html">
+                
+                        
+                        Hexo静态博客搭建
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.3" data-path="../node/gitbook.html">
+            
+
+                
+                    <a href="../node/gitbook.html">
+                
+                        
+                        GitBook静态文档生成
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.4" data-path="../node/babel.html">
+            
+
+                
+                    <a href="../node/babel.html">
+                
+                        
+                        Babel
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.5" data-path="../node/test.html">
+            
+
+                
+                    <a href="../node/test.html">
+                
+                        
+                        Test
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.6" data-path="../node/benchmark.html">
+            
+
+                
+                    <a href="../node/benchmark.html">
+                
+                        
+                        Benchmark
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.7" data-path="../node/npm.html">
+            
+
+                
+                    <a href="../node/npm.html">
+                
+                        
+                        造轮子(NPM)篇
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">DB</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.6.1" data-path="../db/mysql.html">
+            
+
+                
+                    <a href="../db/mysql.html">
+                
+                        
+                        MySQL
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.2" data-path="../db/redis.html">
+            
+
+                
+                    <a href="../db/redis.html">
+                
+                        
+                        Redis
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">常用框架</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.7.1" data-path="../framework/hapi.html">
+            
+
+                
+                    <a href="../framework/hapi.html">
+                
+                        
+                        HAPI
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.2" data-path="../framework/socketio.html">
+            
+
+                
+                    <a href="../framework/socketio.html">
+                
+                        
+                        Socket.IO
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.3" data-path="../framework/electron.html">
+            
+
+                
+                    <a href="../framework/electron.html">
+                
+                        
+                        Electron
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.4" data-path="../framework/udp.html">
+            
+
+                
+                    <a href="../framework/udp.html">
+                
+                        
+                        UDP
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.5" data-path="../framework/koa.html">
+            
+
+                
+                    <a href="../framework/koa.html">
+                
+                        
+                        Koa
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.6" data-path="../framework/vue.html">
+            
+
+                
+                    <a href="../framework/vue.html">
+                
+                        
+                        Vue
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.7" data-path="../framework/redux.html">
+            
+
+                
+                    <a href="../framework/redux.html">
+                
+                        
+                        React Redux
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.8" data-path="../framework/nativescript.html">
+            
+
+                
+                    <a href="../framework/nativescript.html">
+                
+                        
+                        NativeScript
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">算法入门（使用ES 6）</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.8.1" data-path="../algorithm/sum-of-odd-numbers.html">
+            
+
+                
+                    <a href="../algorithm/sum-of-odd-numbers.html">
+                
+                        
+                        奇数求和
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8.2" data-path="../algorithm/find-the-stray-number.html">
+            
+
+                
+                    <a href="../algorithm/find-the-stray-number.html">
+                
+                        
+                        查找杂散数
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">经验篇</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../experience/design/">
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">设计</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="3.1.1" data-path="../../experience/design/requirements.html">
+            
+
+                
+                    <a href="../../experience/design/requirements.html">
+                
+                        
+                        需求分析
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../../experience/design/product.html">
+            
+
+                
+                    <a href="../../experience/design/product.html">
+                
+                        
+                        产品设计
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../../experience/design/architecture.html">
+            
+
+                
+                    <a href="../../experience/design/architecture.html">
+                
+                        
+                        系统架构
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../../experience/design/system.html">
+            
+
+                
+                    <a href="../../experience/design/system.html">
+                
+                        
+                        系统架构设计实践
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../../experience/project/">
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">项目</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="3.2.1" data-path="../../experience/project/structure.html">
+            
+
+                
+                    <a href="../../experience/project/structure.html">
+                
+                        
+                        项目结构
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../../experience/project/develop.html">
+            
+
+                
+                    <a href="../../experience/project/develop.html">
+                
+                        
+                        开发指南
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.3" data-path="../../experience/project/user/module.html">
+            
+
+                
+                    <a href="../../experience/project/user/module.html">
+                
+                        
+                        功能模块设计
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.4" data-path="../../experience/project/user/db.html">
+            
+
+                
+                    <a href="../../experience/project/user/db.html">
+                
+                        
+                        数据库设计
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.5" data-path="../../experience/project/user/cache.html">
+            
+
+                
+                    <a href="../../experience/project/user/cache.html">
+                
+                        
+                        缓存设计
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.6" data-path="../../experience/project/user/bdd.html">
+            
+
+                
+                    <a href="../../experience/project/user/bdd.html">
+                
+                        
+                        BDD实践
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.7" data-path="../../experience/project/user/particulars.html">
+            
+
+                
+                    <a href="../../experience/project/user/particulars.html">
+                
+                        
+                        代码细节处理
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../../experience/operation/">
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">运维</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="3.3.1" data-path="../../experience/operation/server.html">
+            
+
+                
+                    <a href="../../experience/operation/server.html">
+                
+                        
+                        服务器配置
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="../../experience/operation/pm2.html">
+            
+
+                
+                    <a href="../../experience/operation/pm2.html">
+                
+                        
+                        PM2守护进程
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.3" data-path="../../experience/operation/later.html">
+            
+
+                
+                    <a href="../../experience/operation/later.html">
+                
+                        
+                        Later计划任务
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.4" data-path="../../experience/operation/workflow.html">
+            
+
+                
+                    <a href="../../experience/operation/workflow.html">
+                
+                        
+                        CI工作流
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.5" data-path="../../experience/operation/restarter.html">
+            
+
+                
+                    <a href="../../experience/operation/restarter.html">
+                
+                        
+                        重启服务
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.6" data-path="../../experience/operation/rollback.html">
+            
+
+                
+                    <a href="../../experience/operation/rollback.html">
+                
+                        
+                        版本回退
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.7" data-path="../../experience/operation/certbot.html">
+            
+
+                
+                    <a href="../../experience/operation/certbot.html">
+                
+                        
+                        CertBot证书
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">进阶</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="3.4.1" data-path="../../experience/advanced/meta.html">
+            
+
+                
+                    <a href="../../experience/advanced/meta.html">
+                
+                        
+                        元编程构造优雅解决方案
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.2" data-path="../../experience/advanced/desktop-app.html">
+            
+
+                
+                    <a href="../../experience/advanced/desktop-app.html">
+                
+                        
+                        Electron桌面应用
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.3" data-path="../../experience/advanced/mixed-project.html">
+            
+
+                
+                    <a href="../../experience/advanced/mixed-project.html">
+                
+                        
+                        混合Web应用实践
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">思想篇</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">能力</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../mind/capability/define-good-employee.html">
+            
+
+                
+                    <a href="../../mind/capability/define-good-employee.html">
+                
+                        
+                        好员工的定义
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../../mind/capability/growth.html">
+            
+
+                
+                    <a href="../../mind/capability/growth.html">
+                
+                        
+                        新人成长
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../../mind/capability/study.html">
+            
+
+                
+                    <a href="../../mind/capability/study.html">
+                
+                        
+                        学习能力
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../../mind/capability/solving.html">
+            
+
+                
+                    <a href="../../mind/capability/solving.html">
+                
+                        
+                        问题处理能力
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">思维模式</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="4.2.1" data-path="../../mind/thinking/shit.html">
+            
+
+                
+                    <a href="../../mind/thinking/shit.html">
+                
+                        
+                        忽略细节，就是屎
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="../../mind/thinking/dialectical.html">
+            
+
+                
+                    <a href="../../mind/thinking/dialectical.html">
+                
+                        
+                        辩证思维
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="../../mind/thinking/ocd.html">
+            
+
+                
+                    <a href="../../mind/thinking/ocd.html">
+                
+                        
+                        克服强迫症
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.4" data-path="../../mind/thinking/buckets.html">
+            
+
+                
+                    <a href="../../mind/thinking/buckets.html">
+                
+                        
+                        木桶效应
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">团队建设</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="4.3.1" data-path="../../mind/team/hire.html">
+            
+
+                
+                    <a href="../../mind/team/hire.html">
+                
+                        
+                        招聘原则
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../../mind/team/meeting.html">
+            
+
+                
+                    <a href="../../mind/team/meeting.html">
+                
+                        
+                        会议原则
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.3" data-path="../../mind/team/concept.html">
+            
+
+                
+                    <a href="../../mind/team/concept.html">
+                
+                        
+                        人才理念
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+
+    
+
+
+    
+        <li class="divider"></li>
+        
+            <li>
+                <a href="https://willin.wang/" target="_blank" class="custom-link">作者</a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/js-cool/leader.js.cool" target="_blank" class="custom-link">Github</a>
+            </li>
+        
+            <li>
+                <a href="https://coding.net/u/willin/p/leader.js.cool/git" target="_blank" class="custom-link">Coding</a>
+            </li>
+        
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </div>
+            
+        
+    </div>
+    <a href="#" id="top-button" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+</aside>
+
+        
+    
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-adsense/plugin.js"></script>
+        
+    
+
+    
+    <script type="text/javascript" src="../../_static/main.js"></script>
+    
+
+    </body>
+</html>
+

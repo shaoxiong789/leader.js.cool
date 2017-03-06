@@ -1,0 +1,1557 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-cn" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>GIT · 不可替代的团队领袖培养计划</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="promise.html" />
+    
+    
+    <link rel="prev" href="shell.html" />
+    
+
+    </head>
+    <body>
+        
+<main>
+    <div class="book">
+        <div class="book-body">
+            
+                <div class="body-inner">
+                    
+                        
+
+
+<!--<div class="book-header" role="navigation">
+    
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >GIT</a>
+    </h1>
+</div>-->
+
+
+
+
+                        <div class="page-wrapper" role="main">
+                            <div class="page-inner">
+                                
+                                    <section class="normal markdown-section">
+                                    
+                                    <h1 id="git">Git</h1>
+<h2 id="&#x521D;&#x59CB;&#x5316;&#x7248;&#x672C;&#x5E93;">&#x521D;&#x59CB;&#x5316;&#x7248;&#x672C;&#x5E93;</h2>
+<p>Git &#x901A;&#x5E38;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x6765;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;:</p>
+<h4 id="git-clone">git clone:</h4>
+<p>&#x8FD9;&#x662F;&#x8F83;&#x4E3A;&#x7B80;&#x5355;&#x7684;&#x4E00;&#x79CD;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x5F0F;&#xFF0C;&#x5F53;&#x4F60;&#x5DF2;&#x7ECF;&#x6709;&#x4E00;&#x4E2A;&#x8FDC;&#x7A0B;&#x7684;Git&#x7248;&#x672C;&#x5E93;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5728;&#x672C;&#x5730;&#x514B;&#x9686;&#x4E00;&#x4EFD;</p>
+<p>&#x4F8B;&#x5982;:</p>
+<pre><code>$ git clone git://github.com/someone/some_project.git  some_project
+</code></pre><p>&#x4E0A;&#x9762;&#x7684;&#x547D;&#x4EE4;&#x5C31;&#x662F;&#x5C06;&apos;git://github.com/someone/some_project.git&apos;&#x8FD9;&#x4E2A;URL&#x5730;&#x5740;&#x7684;&#x8FDC;&#x7A0B;&#x7248;&#x672C;&#x5E93;&#x5B8C;&#x5168;&#x514B;&#x9686;&#x5230;&#x672C;&#x5730;some_project&#x76EE;&#x5F55;&#x4E0B;&#x9762;,
+&#x5982;&#x679C;&#x60F3;&#x8981;&#x8BBE;&#x7F6E;&#x81EA;&#x5DF1;&#x7684;git&#x914D;&#x7F6E;,&#x5C31;git init&#x521D;&#x59CB;&#x5316;.git&#x6587;&#x4EF6;.&#x521B;&#x5EFA;&#x81EA;&#x5DF1;&#x7684;&#x7248;&#x672C;&#x5E93;,&#x4E5F;&#x53EF;&#x4EE5;git branch new_branch&#x521B;&#x5EFA;&#x81EA;&#x5DF1;&#x7684;&#x5206;&#x652F;.</p>
+<pre><code>$ git remote add origin git://github.com/someone/some_project.git
+</code></pre><p>&#x8BBE;&#x7F6E;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x522B;&#x540D;&#x4E3A;origin,&#x8FD9;&#x6837;&#x5C06;&#x4EE3;&#x7801;&#x63D0;&#x4EA4;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;:</p>
+<pre><code>$ git push origin #&#x5C06;&#x4EE3;&#x7801;&#x63D0;&#x4EA4;&#x5230;origin&#x7684;master&#x4E0A;&#x9762;(&#x9ED8;&#x8BA4;)
+</code></pre><h4 id="git-init&#x548C;git-remote&#xFF1A;">git init&#x548C;git remote&#xFF1A;</h4>
+<p>&#x8FD9;&#x79CD;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x5F0F;&#x7A0D;&#x5FAE;&#x590D;&#x6742;&#x4E00;&#x4E9B;</p>
+<p>&#x4F8B;&#x5982;:</p>
+<pre><code>$ mkdir [yourworkname] #&#x672C;&#x5730;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;
+$ cd [yourworkname] #&#x8FDB;&#x5165;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;
+$ git init #&#x521D;&#x59CB;&#x5316;&#x7248;&#x672C;&#x5E93;,&#x5373;&#x751F;&#x6210;.git,&#x5C31;&#x4F1A;&#x5BF9;&#x8BE5;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x7248;&#x672C;&#x63A7;&#x5236;
+</code></pre><p>Git&#x4EE5;&#x540E;&#xFF0C;&#x4F60;&#x4F1A;&#x770B;&#x5230;&#x76EE;&#x5F55;&#x4E0B;&#x9762;&#x81EA;&#x52A8;&#x751F;&#x6210;.git&#x6587;&#x4EF6;,&#x7528;&#x4E8E;&#x7248;&#x672C;&#x7BA1;&#x7406;&#x4F7F;&#x7528;(&#x975E;&#x5E38;&#x91CD;&#x8981;&#x7684;&#x6587;&#x4EF6;,&#x4E0D;&#x8981;&#x8F7B;&#x6613;&#x6539;&#x52A8;),&#x8FD9;&#x65F6;&#x5019;&#x5982;&#x679C;&#x4F60;&#x9700;&#x8981;&#x5C06;&#x5B83;&#x653E;&#x5230;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#xFF0C;&#x5E76;&#x628A;&#x53EF;&#x8BBF;&#x95EE;&#x7684;URL&#x8BB0;&#x5F55;&#x4E0B;&#x6765;&#xFF0C;&#x6B64;&#x65F6;&#x4F60;&#x5C31;&#x53EF;&#x4EE5;&#x5229;&#x7528;&apos;git remote add&apos;&#x547D;&#x4EE4;&#x6765;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#xFF0C;</p>
+<p>&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code>$ git remote add origin git://github.com/someone/another_project.git
+</code></pre><p>&#x4E0A;&#x9762;&#x7684;&#x547D;&#x4EE4;&#x5C31;&#x4F1A;&#x589E;&#x52A0;URL&#x5730;&#x5740;&#x4E3A;&apos;git: //github.com/someone/another_project.git&apos;&#xFF0C;&#x540D;&#x79F0;&#x4E3A;origin&#x7684;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x4EE5;&#x540E;&#x63D0;&#x4EA4;&#x4EE3;&#x7801;&#x7684;&#x65F6;&#x5019;&#x53EA;&#x9700;&#x8981;&#x4F7F;&#x7528; origin&#x522B;&#x540D;&#x5373;&#x53EF;</p>
+<h2 id="git-&#x7684;&#x57FA;&#x672C;&#x547D;&#x4EE4;">Git &#x7684;&#x57FA;&#x672C;&#x547D;&#x4EE4;</h2>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6709;&#x4E86;&#x672C;&#x5730;&#x548C;&#x8FDC;&#x7A0B;&#x7684;&#x7248;&#x672C;&#x5E93;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x6765;&#x8BD5;&#x7740;&#x7528;&#x7528;Git&#x7684;&#x57FA;&#x672C;&#x547D;&#x4EE4;&#xFF1A;</p>
+<h4 id="git-pull&#xFF1A;">git pull&#xFF1A;</h4>
+<p>&#x4ECE;&#x5176;&#x4ED6;&#x7684;&#x7248;&#x672C;&#x5E93;&#xFF08;&#x65E2;&#x53EF;&#x4EE5;&#x662F;&#x8FDC;&#x7A0B;&#x7684;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x672C;&#x5730;&#x7684;&#xFF09;&#x5C06;&#x4EE3;&#x7801;&#x66F4;&#x65B0;&#x5230;&#x672C;&#x5730;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;&apos;git pull origin master&apos;&#x5C31;&#x662F;&#x5C06;origin&#x8FD9;&#x4E2A;&#x7248;&#x672C;&#x5E93;&#x7684;&#x4EE3;&#x7801;&#x66F4;&#x65B0;&#x5230;&#x672C;&#x5730;&#x7684;master&#x4E3B;&#x679D;&#xFF0C;&#x8BE5;&#x529F;&#x80FD;&#x7C7B;&#x4F3C;&#x4E8E;SVN&#x7684;update</p>
+<h4 id="git-add&#xFF1A;">git add&#xFF1A;</h4>
+<p>&#x662F; &#x5C06;&#x5F53;&#x524D;&#x66F4;&#x6539;&#x6216;&#x8005;&#x65B0;&#x589E;&#x7684;&#x6587;&#x4EF6;&#x52A0;&#x5165;&#x5230;Git&#x7684;&#x7D22;&#x5F15;&#x4E2D;&#xFF0C;&#x52A0;&#x5165;&#x5230;Git&#x7684;&#x7D22;&#x5F15;&#x4E2D;&#x5C31;&#x8868;&#x793A;&#x8BB0;&#x5165;&#x4E86;&#x7248;&#x672C;&#x5386;&#x53F2;&#x4E2D;&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;&#x63D0;&#x4EA4;&#x4E4B;&#x524D;&#x6240;&#x9700;&#x8981;&#x6267;&#x884C;&#x7684;&#x4E00;&#x6B65;&#xFF0C;&#x4F8B;&#x5982;&apos;git add app/model/user.rb&apos;&#x5C31;&#x4F1A;&#x589E;&#x52A0;app/model/user.rb&#x6587;&#x4EF6;&#x5230;Git&#x7684;&#x7D22;&#x5F15;&#x4E2D;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;git add .&#x6765;&#x52A0;&#x5165;&#x5F53;&#x524D;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#x6240;&#x6709;&#x4FEE;&#x6539;&#x8FC7;&#x6216;&#x8005;&#x65B0;&#x589E;&#x7684;&#x6587;&#x4EF6;.</p>
+<h4 id="git-rm&#xFF1A;">git rm&#xFF1A;</h4>
+<p>&#x4ECE;&#x5F53;&#x524D;&#x7684;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#x4E2D;&#x548C;&#x7D22;&#x5F15;&#x4E2D;&#x5220;&#x9664;&#x6587;&#x4EF6;&#xFF0C;&#x4F8B;&#x5982;&apos;git rm app/model/user.rb&apos;&#xFF0C;&#x8BE5;&#x529F;&#x80FD;&#x7C7B;&#x4F3C;&#x4E8E;SVN&#x7684;rm&#x3001;del</p>
+<h4 id="git-commit&#xFF1A;">git commit&#xFF1A;</h4>
+<p>&#x63D0;&#x4EA4;&#x5F53;&#x524D;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#x7684;&#x4FEE;&#x6539;&#x5185;&#x5BB9;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;SVN&#x7684;commit&#x547D;&#x4EE4;&#xFF0C;&#x4F8B;&#x5982;&apos;git commit -m story #3, add user model&apos;&#xFF0C;&#x63D0;&#x4EA4;&#x7684;&#x65F6;&#x5019;&#x5FC5;&#x987B;&#x7528;-m&#x6765;&#x8F93;&#x5165;&#x4E00;&#x6761;&#x63D0;&#x4EA4;&#x4FE1;&#x606F;&#xFF0C;&#x8BE5;&#x529F;&#x80FD;&#x7C7B;&#x4F3C;&#x4E8E;SVN&#x7684;commit</p>
+<h4 id="git-push&#xFF1A;">git push&#xFF1A;</h4>
+<p>&#x5C06;&#x672C;&#x5730;commit&#x7684;&#x4EE3;&#x7801;&#x66F4;&#x65B0;&#x5230;&#x8FDC;&#x7A0B;&#x7248;&#x672C;&#x5E93;&#x4E2D;&#xFF0C;&#x4F8B;&#x5982;&apos;git push origin&apos;&#x5C31;&#x4F1A;&#x5C06;&#x672C;&#x5730;&#x7684;&#x4EE3;&#x7801;&#x66F4;&#x65B0;&#x5230;&#x540D;&#x4E3A;orgin&#x7684;&#x8FDC;&#x7A0B;&#x7248;&#x672C;&#x5E93;&#x4E2D;</p>
+<h4 id="git-log&#xFF1A;">git log&#xFF1A;</h4>
+<p>&#x67E5;&#x770B;&#x5386;&#x53F2;&#x65E5;&#x5FD7;&#xFF0C;&#x8BE5;&#x529F;&#x80FD;&#x7C7B;&#x4F3C;&#x4E8E;SVN&#x7684;log</p>
+<h4 id="git-revert&#xFF1A;">git revert&#xFF1A;</h4>
+<p>&#x8FD8;&#x539F;&#x4E00;&#x4E2A;&#x7248;&#x672C;&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x5FC5;&#x987B;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x7684;Git&#x7248;&#x672C;&#x53F7;&#xFF0C;&#x4F8B;&#x5982;&apos;git revert bbaf6fb5060b4875b18ff9ff637ce118256d6f20&apos;&#xFF0C;Git&#x7684;&#x7248;&#x672C;&#x53F7;&#x90FD;&#x662F;&#x751F;&#x6210;&#x7684;&#x4E00;&#x4E2A;&#x54C8;&#x5E0C;&#x503C;</p>
+<h4 id="git-branch&#xFF1A;">git branch&#xFF1A;</h4>
+<p>&#x5BF9;&#x5206;&#x652F;&#x7684;&#x589E;&#x3001;&#x5220;&#x3001;&#x67E5;&#x7B49;&#x64CD;&#x4F5C;&#xFF0C;&#x4F8B;&#x5982;&apos;git branch new_branch&apos;&#x4F1A;&#x4ECE;&#x5F53;&#x524D;&#x7684;&#x5DE5;&#x4F5C;&#x7248;&#x672C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x53EB;&#x505A;new_branch&#x7684;&#x65B0;&#x5206;&#x652F;&#xFF0C;&apos;git branch -D new_branch&apos;&#x5C31;&#x4F1A;&#x5F3A;&#x5236;&#x5220;&#x9664;&#x53EB;&#x505A;new_branch&#x7684;&#x5206;&#x652F;&#xFF0C;&apos;git branch&apos;&#x5C31;&#x4F1A;&#x5217;&#x51FA;&#x672C;&#x5730;&#x6240;&#x6709;&#x7684;&#x5206;&#x652F;</p>
+<h4 id="git-checkout&#xFF1A;">git checkout&#xFF1A;</h4>
+<p>Git&#x7684;checkout&#x6709;&#x4E24;&#x4E2A;&#x4F5C;&#x7528;&#xFF0C;&#x5176;&#x4E00;&#x662F;&#x5728;&#x4E0D;&#x540C;&#x7684;branch&#x4E4B;&#x95F4;&#x8FDB;&#x884C;&#x5207;&#x6362;&#xFF0C;&#x4F8B;&#x5982;&apos;git checkout new_branch&apos;&#x5C31;&#x4F1A;&#x5207;&#x6362;&#x5230;new_branch&#x7684;&#x5206;&#x652F;&#x4E0A;&#x53BB;&#xFF1B;&#x53E6;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#x662F;&#x8FD8;&#x539F;&#x4EE3;&#x7801;&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x4F8B;&#x5982;&apos;git checkout app/model/user.rb&apos;&#x5C31;&#x4F1A;&#x5C06;user.rb&#x6587;&#x4EF6;&#x4ECE;&#x4E0A;&#x4E00;&#x4E2A;&#x5DF2;&#x63D0;&#x4EA4;&#x7684;&#x7248;&#x672C;&#x4E2D;&#x66F4;&#x65B0;&#x56DE;&#x6765;&#xFF0C;&#x672A;&#x63D0;&#x4EA4;&#x7684;&#x5185;&#x5BB9;&#x5168;&#x90E8;&#x4F1A;&#x56DE;&#x6EDA;</p>
+<h4 id="git-rebase&#xFF1A;">git rebase&#xFF1A;</h4>
+<p>&#x7528;&#x4E0B;&#x9762;&#x4E24;&#x5E45;&#x56FE;&#x89E3;&#x91CA;&#x4F1A;&#x6BD4;&#x8F83;&#x6E05;&#x695A;&#x4E00;&#x4E9B;&#xFF0C;rebase&#x547D;&#x4EE4;&#x6267;&#x884C;&#x540E;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x5C06;&#x5206;&#x652F;&#x70B9;&#x4ECE;C&#x79FB;&#x5230;&#x4E86;G&#xFF0C;&#x8FD9;&#x6837;&#x5206;&#x652F;&#x4E5F;&#x5C31;&#x5177;&#x6709;&#x4E86;&#x4ECE;C&#x5230;G&#x7684;&#x529F;&#x80FD;</p>
+<p><img src="../../_static/basic/git/rebase.jpg" alt="img"></p>
+<h4 id="git-reset&#xFF1A;">git reset&#xFF1A;</h4>
+<p>&#x5C06;&#x5F53;&#x524D;&#x7684;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;&#x5B8C;&#x5168;&#x56DE;&#x6EDA;&#x5230;&#x6307;&#x5B9A;&#x7684;&#x7248;&#x672C;&#x53F7;&#xFF0C;&#x5047;&#x8BBE;&#x5982;&#x4E0B;&#x56FE;&#xFF0C;&#x6211;&#x4EEC;&#x6709;A-G&#x4E94;&#x6B21;&#x63D0;&#x4EA4;&#x7684;&#x7248;&#x672C;&#xFF0C;&#x5176;&#x4E2D;C&#x7684;&#x7248;&#x672C;&#x53F7;&#x662F; bbaf6fb5060b4875b18ff9ff637ce118256d6f20&#xFF0C;&#x6211;&#x4EEC;&#x6267;&#x884C;&#x4E86;&apos;git reset bbaf6fb5060b4875b18ff9ff637ce118256d6f20&apos;&#x90A3;&#x4E48;&#x7ED3;&#x679C;&#x5C31;&#x53EA;&#x5269;&#x4E0B;&#x4E86;A-C&#x4E09;&#x4E2A;&#x63D0;&#x4EA4;&#x7684;&#x7248;&#x672C;</p>
+<p><img src="../../_static/basic/git/reset.jpg" alt="img"></p>
+<ol>
+<li><p>Git&#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x5728;&#x7248;&#x672C;&#x7684;&#x5386;&#x53F2;&#x4E4B;&#x95F4;&#x7A7F;&#x68AD;&#xFF0C;&#x4F7F;&#x7528;&#x547D;&#x4EE4;git reset --hard commit_id&#x3002;</p>
+</li>
+<li><p>&#x7A7F;&#x68AD;&#x524D;&#xFF0C;&#x7528;git log&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x63D0;&#x4EA4;&#x5386;&#x53F2;&#xFF0C;&#x4EE5;&#x4FBF;&#x786E;&#x5B9A;&#x8981;&#x56DE;&#x9000;&#x5230;&#x54EA;&#x4E2A;&#x7248;&#x672C;&#x3002;</p>
+</li>
+<li><p>&#x8981;&#x91CD;&#x8FD4;&#x672A;&#x6765;&#xFF0C;&#x7528;git reflog&#x67E5;&#x770B;&#x547D;&#x4EE4;&#x5386;&#x53F2;&#xFF0C;&#x4EE5;&#x4FBF;&#x786E;&#x5B9A;&#x8981;&#x56DE;&#x5230;&#x672A;&#x6765;&#x7684;&#x54EA;&#x4E2A;&#x7248;&#x672C;&#x3002;</p>
+</li>
+</ol>
+<h4 id="git-stash&#xFF1A;">git stash&#xFF1A;</h4>
+<p>&#x5C06;&#x5F53;&#x524D;&#x672A;&#x63D0;&#x4EA4;&#x7684;&#x5DE5;&#x4F5C;&#x5B58;&#x5165;Git&#x5DE5;&#x4F5C;&#x6808;&#x4E2D;&#xFF0C;&#x65F6;&#x673A;&#x6210;&#x719F;&#x7684;&#x65F6;&#x5019;&#x518D;&#x5E94;&#x7528;&#x56DE;&#x6765;&#xFF0C;&#x8FD9;&#x91CC;&#x6682;&#x65F6;&#x63D0;&#x4E00;&#x4E0B;&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x7684;&#x7528;&#x6CD5;&#xFF0C;&#x540E;&#x9762;&#x5728;&#x6280;&#x5DE7;&#x7BC7;&#x4F1A;&#x91CD;&#x70B9;&#x8BB2;&#x89E3;</p>
+<h4 id="git-config&#xFF1A;">git config&#xFF1A;</h4>
+<p>&#x5229;&#x7528;&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x65B0;&#x589E;&#x3001;&#x66F4;&#x6539;Git&#x7684;&#x5404;&#x79CD;&#x8BBE;&#x7F6E;&#xFF0C;&#x4F8B;&#x5982;&apos;git config branch.master.remote origin&apos;&#x5C31;&#x5C06;master&#x7684;&#x8FDC;&#x7A0B;&#x7248;&#x672C;&#x5E93;&#x8BBE;&#x7F6E;&#x4E3A;&#x522B;&#x540D;&#x53EB;&#x505A;origin&#x7248;&#x672C;&#x5E93;&#xFF0C;&#x540E;&#x9762;&#x5728;&#x6280;&#x5DE7;&#x7BC7;&#x4F1A;&#x5229;&#x7528;&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x4E2A;&#x6027;&#x5316;&#x8BBE;&#x7F6E;&#x4F60;&#x7684;Git&#xFF0C;&#x4E3A;&#x4F60;&#x6253;&#x9020;&#x72EC;&#x4E00;&#x65E0;&#x4E8C;&#x7684; Git</p>
+<h4 id="git-tag&#xFF1A;">git tag&#xFF1A;</h4>
+<p>&#x53EF;&#x4EE5;&#x5C06;&#x67D0;&#x4E2A;&#x5177;&#x4F53;&#x7684;&#x7248;&#x672C;&#x6253;&#x4E0A;&#x4E00;&#x4E2A;&#x6807;&#x7B7E;&#xFF0C;&#x8FD9;&#x6837;&#x4F60;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x8BB0;&#x5FC6;&#x590D;&#x6742;&#x7684;&#x7248;&#x672C;&#x53F7;&#x54C8;&#x5E0C;&#x503C;&#x4E86;&#xFF0C;&#x4F8B;&#x5982;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&apos;git tag revert_version bbaf6fb5060b4875b18ff9ff637ce118256d6f20&apos;&#x6765;&#x6807;&#x8BB0;&#x8FD9;&#x4E2A;&#x88AB;&#x4F60;&#x8FD8;&#x539F;&#x7684;&#x7248;&#x672C;&#xFF0C;&#x90A3;&#x4E48;&#x4EE5;&#x540E;&#x4F60;&#x60F3;&#x67E5;&#x770B;&#x8BE5;&#x7248;&#x672C;&#x65F6;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; revert_version&#x6807;&#x7B7E;&#x540D;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x54C8;&#x5E0C;&#x503C;&#x4E86;</p>
+
+                                    
+                                    </section>
+                                
+                            </div>
+                        </div>
+                    
+                </div>
+
+                
+                    
+                    <a href="shell.html" class="navigation navigation-prev " aria-label="Previous page: SHELL">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    
+                    
+                    <a href="promise.html" class="navigation navigation-next " aria-label="Next page: Promise">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    
+                
+            
+        </div>
+
+        <script>
+            var gitbook = gitbook || [];
+            gitbook.push(function() {
+                gitbook.page.hasChanged({"page":{"title":"GIT","level":"2.3.3","depth":2,"next":{"title":"Promise","level":"2.3.4","depth":2,"path":"basic/knowledge/promise.md","ref":"basic/knowledge/promise.md","articles":[]},"previous":{"title":"SHELL","level":"2.3.2","depth":2,"path":"basic/knowledge/shell.md","ref":"basic/knowledge/shell.md","articles":[]},"dir":"ltr"},"config":{"plugins":["addcssjs","-autotheme","-atoc","-fancybox","donate","-github","-disqus","-duoshuo","-edit-link","adsense","-maxiang","wordcount","theme-material","highlight","-lunr","-fontsettings","-sharing","-search","sitemap"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"introduction-text":"封面","fancybox":{},"github":{"url":"https://coding.net/u/willin/p/leader.js.cool/git"},"wordcount":{},"atoc":{"addClass":true,"className":"atoc"},"theme-material":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"adsense":{"client":"ca-pub-5059418763237956","slot":"2139110924","format":"auto","element":".page-inner section"},"addcssjs":{"css":[],"js":["_static/main.js"]},"duoshuo":{"short_name":"leader-js","theme":"default"},"donate":{"alipay":"http://go.sh.gg/images/alipay.png","alipayText":"支付宝打赏","button":"赏","title":"如果您觉得受益，请打赏支持！","wechat":"http://go.sh.gg/images/wx.png","wechatText":"微信打赏"},"fontsettings":{"family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://leader.js.cool/"},"autotheme":{"white":[9,10,11,12,13,14,15,16],"sepia":[6,7,8,17,18,19],"night":[20,21,22,23,0,1,2,3,4,5]},"edit-link":{"base":"https://coding.net/u/willin/p/leader.js.cool/git/edit/master/","label":"编辑此页"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"toc":true,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":true},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"不可替代的团队领袖培养计划","language":"zh-cn","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"作者":"https://willin.wang/","Github":"https://github.com/js-cool/leader.js.cool","Coding":"https://coding.net/u/willin/p/leader.js.cool/git"}},"gitbook":"=3.2.2","description":"Author: Willin Wang"},"file":{"path":"basic/knowledge/git.md","mtime":"2017-01-04T15:29:46.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-03-06T02:37:48.264Z"},"basePath":"../..","book":{"language":""}});
+            });
+        </script>
+    </div>
+</main>
+
+<aside>
+    <div id="slide-out" class="book-summary side-nav fixed">
+        
+            
+            
+                <div role="navigation">
+                
+
+
+<ul class="summary">
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+
+                
+                    <a href="../../">
+                
+                        
+                        前言
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../COPYRIGHT.html">
+            
+
+                
+                    <a href="../../COPYRIGHT.html">
+                
+                        
+                        版权
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">知识篇</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../osx.html">
+            
+
+                
+                    <a href="../osx.html">
+                
+                        
+                        操作系统(OS X)
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">必备神器</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.2.1" data-path="../resource/brew.html">
+            
+
+                
+                    <a href="../resource/brew.html">
+                
+                        
+                        Brew
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="../resource/iterm.html">
+            
+
+                
+                    <a href="../resource/iterm.html">
+                
+                        
+                        iTerm
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="../resource/ide.html">
+            
+
+                
+                    <a href="../resource/ide.html">
+                
+                        
+                        IDE
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.4" data-path="../resource/ss.html">
+            
+
+                
+                    <a href="../resource/ss.html">
+                
+                        
+                        科学上网
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.5" data-path="../resource/online.html">
+            
+
+                
+                    <a href="../resource/online.html">
+                
+                        
+                        在线资源
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.6" data-path="../resource/offline.html">
+            
+
+                
+                    <a href="../resource/offline.html">
+                
+                        
+                        离线资源
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.7" data-path="../resource/frontend.html">
+            
+
+                
+                    <a href="../resource/frontend.html">
+                
+                        
+                        前端资源
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">基础知识</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.3.1" data-path="http.html">
+            
+
+                
+                    <a href="http.html">
+                
+                        
+                        HTTP
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" data-path="shell.html">
+            
+
+                
+                    <a href="shell.html">
+                
+                        
+                        SHELL
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.3.3" data-path="git.html">
+            
+
+                
+                    <a href="git.html">
+                
+                        
+                        GIT
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.4" data-path="promise.html">
+            
+
+                
+                    <a href="promise.html">
+                
+                        
+                        Promise
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.5" data-path="docker.html">
+            
+
+                
+                    <a href="docker.html">
+                
+                        
+                        Docker 加速
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">Vanilla JS</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.4.1" data-path="../js/tricks.html">
+            
+
+                
+                    <a href="../js/tricks.html">
+                
+                        
+                        小技巧
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2" data-path="../js/fetch.html">
+            
+
+                
+                    <a href="../js/fetch.html">
+                
+                        
+                        Fetch AJAX
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3" data-path="../js/es.html">
+            
+
+                
+                    <a href="../js/es.html">
+                
+                        
+                        ES Next
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4" data-path="../js/map.html">
+            
+
+                
+                    <a href="../js/map.html">
+                
+                        
+                        Map
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.5" data-path="../js/reduce.html">
+            
+
+                
+                    <a href="../js/reduce.html">
+                
+                        
+                        Reduce
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.6" data-path="../js/regexp.html">
+            
+
+                
+                    <a href="../js/regexp.html">
+                
+                        
+                        正则替换
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">Node.js</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.5.1" data-path="../node/pkg.html">
+            
+
+                
+                    <a href="../node/pkg.html">
+                
+                        
+                        包管理
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.2" data-path="../node/hexo.html">
+            
+
+                
+                    <a href="../node/hexo.html">
+                
+                        
+                        Hexo静态博客搭建
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.3" data-path="../node/gitbook.html">
+            
+
+                
+                    <a href="../node/gitbook.html">
+                
+                        
+                        GitBook静态文档生成
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.4" data-path="../node/babel.html">
+            
+
+                
+                    <a href="../node/babel.html">
+                
+                        
+                        Babel
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.5" data-path="../node/test.html">
+            
+
+                
+                    <a href="../node/test.html">
+                
+                        
+                        Test
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.6" data-path="../node/benchmark.html">
+            
+
+                
+                    <a href="../node/benchmark.html">
+                
+                        
+                        Benchmark
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.7" data-path="../node/npm.html">
+            
+
+                
+                    <a href="../node/npm.html">
+                
+                        
+                        造轮子(NPM)篇
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">DB</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.6.1" data-path="../db/mysql.html">
+            
+
+                
+                    <a href="../db/mysql.html">
+                
+                        
+                        MySQL
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.2" data-path="../db/redis.html">
+            
+
+                
+                    <a href="../db/redis.html">
+                
+                        
+                        Redis
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">常用框架</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.7.1" data-path="../framework/hapi.html">
+            
+
+                
+                    <a href="../framework/hapi.html">
+                
+                        
+                        HAPI
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.2" data-path="../framework/socketio.html">
+            
+
+                
+                    <a href="../framework/socketio.html">
+                
+                        
+                        Socket.IO
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.3" data-path="../framework/electron.html">
+            
+
+                
+                    <a href="../framework/electron.html">
+                
+                        
+                        Electron
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.4" data-path="../framework/udp.html">
+            
+
+                
+                    <a href="../framework/udp.html">
+                
+                        
+                        UDP
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.5" data-path="../framework/koa.html">
+            
+
+                
+                    <a href="../framework/koa.html">
+                
+                        
+                        Koa
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.6" data-path="../framework/vue.html">
+            
+
+                
+                    <a href="../framework/vue.html">
+                
+                        
+                        Vue
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.7" data-path="../framework/redux.html">
+            
+
+                
+                    <a href="../framework/redux.html">
+                
+                        
+                        React Redux
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.8" data-path="../framework/nativescript.html">
+            
+
+                
+                    <a href="../framework/nativescript.html">
+                
+                        
+                        NativeScript
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">算法入门（使用ES 6）</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.8.1" data-path="../algorithm/sum-of-odd-numbers.html">
+            
+
+                
+                    <a href="../algorithm/sum-of-odd-numbers.html">
+                
+                        
+                        奇数求和
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8.2" data-path="../algorithm/find-the-stray-number.html">
+            
+
+                
+                    <a href="../algorithm/find-the-stray-number.html">
+                
+                        
+                        查找杂散数
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">经验篇</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../experience/design/">
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">设计</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="3.1.1" data-path="../../experience/design/requirements.html">
+            
+
+                
+                    <a href="../../experience/design/requirements.html">
+                
+                        
+                        需求分析
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../../experience/design/product.html">
+            
+
+                
+                    <a href="../../experience/design/product.html">
+                
+                        
+                        产品设计
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../../experience/design/architecture.html">
+            
+
+                
+                    <a href="../../experience/design/architecture.html">
+                
+                        
+                        系统架构
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../../experience/design/system.html">
+            
+
+                
+                    <a href="../../experience/design/system.html">
+                
+                        
+                        系统架构设计实践
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../../experience/project/">
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">项目</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="3.2.1" data-path="../../experience/project/structure.html">
+            
+
+                
+                    <a href="../../experience/project/structure.html">
+                
+                        
+                        项目结构
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../../experience/project/develop.html">
+            
+
+                
+                    <a href="../../experience/project/develop.html">
+                
+                        
+                        开发指南
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.3" data-path="../../experience/project/user/module.html">
+            
+
+                
+                    <a href="../../experience/project/user/module.html">
+                
+                        
+                        功能模块设计
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.4" data-path="../../experience/project/user/db.html">
+            
+
+                
+                    <a href="../../experience/project/user/db.html">
+                
+                        
+                        数据库设计
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.5" data-path="../../experience/project/user/cache.html">
+            
+
+                
+                    <a href="../../experience/project/user/cache.html">
+                
+                        
+                        缓存设计
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.6" data-path="../../experience/project/user/bdd.html">
+            
+
+                
+                    <a href="../../experience/project/user/bdd.html">
+                
+                        
+                        BDD实践
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.7" data-path="../../experience/project/user/particulars.html">
+            
+
+                
+                    <a href="../../experience/project/user/particulars.html">
+                
+                        
+                        代码细节处理
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../../experience/operation/">
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">运维</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="3.3.1" data-path="../../experience/operation/server.html">
+            
+
+                
+                    <a href="../../experience/operation/server.html">
+                
+                        
+                        服务器配置
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="../../experience/operation/pm2.html">
+            
+
+                
+                    <a href="../../experience/operation/pm2.html">
+                
+                        
+                        PM2守护进程
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.3" data-path="../../experience/operation/later.html">
+            
+
+                
+                    <a href="../../experience/operation/later.html">
+                
+                        
+                        Later计划任务
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.4" data-path="../../experience/operation/workflow.html">
+            
+
+                
+                    <a href="../../experience/operation/workflow.html">
+                
+                        
+                        CI工作流
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.5" data-path="../../experience/operation/restarter.html">
+            
+
+                
+                    <a href="../../experience/operation/restarter.html">
+                
+                        
+                        重启服务
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.6" data-path="../../experience/operation/rollback.html">
+            
+
+                
+                    <a href="../../experience/operation/rollback.html">
+                
+                        
+                        版本回退
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.7" data-path="../../experience/operation/certbot.html">
+            
+
+                
+                    <a href="../../experience/operation/certbot.html">
+                
+                        
+                        CertBot证书
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">进阶</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="3.4.1" data-path="../../experience/advanced/meta.html">
+            
+
+                
+                    <a href="../../experience/advanced/meta.html">
+                
+                        
+                        元编程构造优雅解决方案
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.2" data-path="../../experience/advanced/desktop-app.html">
+            
+
+                
+                    <a href="../../experience/advanced/desktop-app.html">
+                
+                        
+                        Electron桌面应用
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.3" data-path="../../experience/advanced/mixed-project.html">
+            
+
+                
+                    <a href="../../experience/advanced/mixed-project.html">
+                
+                        
+                        混合Web应用实践
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">思想篇</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">能力</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../mind/capability/define-good-employee.html">
+            
+
+                
+                    <a href="../../mind/capability/define-good-employee.html">
+                
+                        
+                        好员工的定义
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../../mind/capability/growth.html">
+            
+
+                
+                    <a href="../../mind/capability/growth.html">
+                
+                        
+                        新人成长
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../../mind/capability/study.html">
+            
+
+                
+                    <a href="../../mind/capability/study.html">
+                
+                        
+                        学习能力
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../../mind/capability/solving.html">
+            
+
+                
+                    <a href="../../mind/capability/solving.html">
+                
+                        
+                        问题处理能力
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">思维模式</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="4.2.1" data-path="../../mind/thinking/shit.html">
+            
+
+                
+                    <a href="../../mind/thinking/shit.html">
+                
+                        
+                        忽略细节，就是屎
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="../../mind/thinking/dialectical.html">
+            
+
+                
+                    <a href="../../mind/thinking/dialectical.html">
+                
+                        
+                        辩证思维
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="../../mind/thinking/ocd.html">
+            
+
+                
+                    <a href="../../mind/thinking/ocd.html">
+                
+                        
+                        克服强迫症
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.4" data-path="../../mind/thinking/buckets.html">
+            
+
+                
+                    <a href="../../mind/thinking/buckets.html">
+                
+                        
+                        木桶效应
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">团队建设</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="4.3.1" data-path="../../mind/team/hire.html">
+            
+
+                
+                    <a href="../../mind/team/hire.html">
+                
+                        
+                        招聘原则
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../../mind/team/meeting.html">
+            
+
+                
+                    <a href="../../mind/team/meeting.html">
+                
+                        
+                        会议原则
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.3" data-path="../../mind/team/concept.html">
+            
+
+                
+                    <a href="../../mind/team/concept.html">
+                
+                        
+                        人才理念
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+
+    
+
+
+    
+        <li class="divider"></li>
+        
+            <li>
+                <a href="https://willin.wang/" target="_blank" class="custom-link">作者</a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/js-cool/leader.js.cool" target="_blank" class="custom-link">Github</a>
+            </li>
+        
+            <li>
+                <a href="https://coding.net/u/willin/p/leader.js.cool/git" target="_blank" class="custom-link">Coding</a>
+            </li>
+        
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </div>
+            
+        
+    </div>
+    <a href="#" id="top-button" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+</aside>
+
+        
+    
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-adsense/plugin.js"></script>
+        
+    
+
+    
+    <script type="text/javascript" src="../../_static/main.js"></script>
+    
+
+    </body>
+</html>
+

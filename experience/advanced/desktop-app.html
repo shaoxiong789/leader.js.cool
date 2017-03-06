@@ -1,0 +1,2070 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-cn" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Electron桌面应用 · 不可替代的团队领袖培养计划</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="mixed-project.html" />
+    
+    
+    <link rel="prev" href="meta.html" />
+    
+
+    </head>
+    <body>
+        
+<main>
+    <div class="book">
+        <div class="book-body">
+            
+                <div class="body-inner">
+                    
+                        
+
+
+<!--<div class="book-header" role="navigation">
+    
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Electron桌面应用</a>
+    </h1>
+</div>-->
+
+
+
+
+                        <div class="page-wrapper" role="main">
+                            <div class="page-inner">
+                                
+                                    <section class="normal markdown-section">
+                                    
+                                    <h1 id="electron-&#x684C;&#x9762;&#x5E94;&#x7528;">Electron &#x684C;&#x9762;&#x5E94;&#x7528;</h1>
+<p>&#x672C;&#x7AE0;&#x8282;&#x4EE5; Mac OS X&#x4E0B; Hosts &#x6587;&#x4EF6;&#x7BA1;&#x7406; App &#x4E3A;&#x4F8B;&#x3002;</p>
+<p>&#x6280;&#x672F;&#x6808;&#x5305;&#x542B;&#xFF1A;</p>
+<ul>
+<li>Electron &#xFF08;&#x4EC5; OS X &#x5E73;&#x53F0;&#xFF09;</li>
+<li>Webpack 2</li>
+<li>Vue 2</li>
+<li>Vuex</li>
+<li>Vue-Router</li>
+<li>Vue-Material &#xFF08;UI&#x7EC4;&#x4EF6;&#xFF09;</li>
+<li>Babel</li>
+<li>ESLint</li>
+<li>Yarn&#xFF08;&#x5305;&#x7BA1;&#x7406;&#xFF09;</li>
+</ul>
+<h2 id="&#x521D;&#x59CB;&#x5316;&#x9879;&#x76EE;">&#x521D;&#x59CB;&#x5316;&#x9879;&#x76EE;</h2>
+<ul>
+<li>&#x5B89;&#x88C5;&#x6240;&#x9700;&#x7684;&#x5404;&#x79CD; NPM &#x5305;&#x3002;</li>
+<li>&#x5F15;&#x5165; ESLint&#x3001;Babel &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;</li>
+</ul>
+<h2 id="&#x914D;&#x7F6E;-vue2--webpack2">&#x914D;&#x7F6E; Vue2 + Webpack2</h2>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;<code>Webpack</code> 2.x.x &#x7248;&#x672C;&#x4E0E; 1.x.x &#x7248;&#x672C;&#x53D1;&#x751F;&#x4E86;&#x4E0D;&#x5C11;&#x6539;&#x52A8;<sup><a href="#fn_1" id="reffn_1">1</a></sup>&#x3002;</p>
+<blockquote id="fn_1">
+<sup>1</sup>. &#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x8FC1;&#x79FB;&#x6587;&#x6863;&#xFF1A; <a href="https://webpack.js.org/guides/migrating/" target="_blank">https://webpack.js.org/guides/migrating/</a> &#x8FDB;&#x884C;&#x5B66;&#x4E60;&#x3002;<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
+</blockquote>
+<h3 id="&#x5751;1&#xFF1A;-extract-text-webpack-plugin">&#x5751;1&#xFF1A; extract-text-webpack-plugin</h3>
+<p>&#x8BE5;&#x63D2;&#x4EF6; NPM &#x6700;&#x65B0;&#x7248;&#x672C;&#x4E3A;1.0.1&#xFF0C;&#x4E0D;&#x652F;&#x6301; Webpack2&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x5B89;&#x88C5; RC3 &#x7248;&#x672C;&#x6765;&#x83B7;&#x5F97;&#x5BF9;&#x5E94;&#x652F;&#x6301;&#x3002;</p>
+<pre><code>yarn add --dev extract-text-webpack-plugin@2.0.0-rc3
+&#x6216;
+npm i --save-dev extract-text-webpack-plugin@2.0.0-rc3
+</code></pre><h3 id="&#x5751;2&#xFF1A;babel-plugin-transform-runtime-&#x4E0E;-extract-text-webpack-plugin-&#x63D2;&#x4EF6;&#x6709;&#x51B2;&#x7A81;">&#x5751;2&#xFF1A;babel-plugin-transform-runtime &#x4E0E; extract-text-webpack-plugin &#x63D2;&#x4EF6;&#x6709;&#x51B2;&#x7A81;</h3>
+<p>&#x4F1A;&#x5BFC;&#x81F4; extract-text &#x63D2;&#x4EF6;&#x62A5;&#x9519;&#x5D29;&#x6E83;&#x3002;</p>
+<p>&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#xFF0C;&#x4FEE;&#x6539; <code>.babelrc</code>&#xFF1A;</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;presets&quot;</span>: [
+    <span class="hljs-string">&quot;latest&quot;</span>
+  ],
+  <span class="hljs-string">&quot;plugins&quot;</span>: [
+    [
+      <span class="hljs-string">&quot;transform-runtime&quot;</span>,
+      {
+        <span class="hljs-string">&quot;helpers&quot;</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-string">&quot;polyfill&quot;</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-string">&quot;regenerator&quot;</span>: <span class="hljs-literal">true</span>
+      }
+    ]
+  ],
+  <span class="hljs-string">&quot;compact&quot;</span>: <span class="hljs-literal">true</span>
+}
+</code></pre>
+<p>&#x5176;&#x4E2D; &#x8BBE;&#x7F6E;<code>compact</code>&#x5C5E;&#x6027;&#x8FD8;&#x80FD;&#x963B;&#x6B62; 500kb &#x9650;&#x5236;&#x7684;&#x8B66;&#x544A;&#x3002;</p>
+<h3 id="&#x5751;3&#xFF1A;postcss-loader-&#x4E0E;-extract-text-webpack-plugin-&#x63D2;&#x4EF6;&#x6709;&#x51B2;&#x7A81;">&#x5751;3&#xFF1A;postcss-loader &#x4E0E; extract-text-webpack-plugin &#x63D2;&#x4EF6;&#x6709;&#x51B2;&#x7A81;</h3>
+<p>&#x76EE;&#x524D;&#x65E0;&#x89E3;&#xFF0C;&#x53BB;&#x6389;&#x4E86;<code>postcss-loader</code>&#x7684;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x4E0B;&#x4E00;&#x9636;&#x6BB5;&#x5C1D;&#x8BD5;&#x3002;</p>
+<h3 id="&#x5751;4&#xFF1A;&#x5728;-vue-&#x4E2D;&#x4F7F;&#x7528;-electron">&#x5751;4&#xFF1A;&#x5728; Vue &#x4E2D;&#x4F7F;&#x7528; Electron</h3>
+<p>&#x9996;&#x5148;&#xFF0C;&#x9700;&#x8981;&#x5728; webpack config &#x4E2D;&#x8BBE;&#x7F6E;&#xFF1A;</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">target:</span> <span class="hljs-string">&apos;electron&apos;</span>
+</code></pre>
+<p>&#x5411; Electron &#x6CE8;&#x518C;&#x63D2;&#x4EF6;&#xFF1A;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;vue&apos;</span>;
+<span class="hljs-keyword">import</span> electron <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;electron&apos;</span>;
+
+Vue.use({
+  <span class="hljs-attr">install</span>: <span class="hljs-function">(<span class="hljs-params">vue</span>) =&gt;</span> {
+    vue.prototype.$electron = electron;
+  }
+});
+</code></pre>
+<p>&#x524D;&#x7AEF;&#x5411; IPC &#x53D1;&#x9001;&#x6D88;&#x606F;&#xFF1A;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">this</span>.$electron.ipcRenderer.send(<span class="hljs-string">&apos;resizePreferencesWindow&apos;</span>, { <span class="hljs-attr">width</span>: <span class="hljs-number">400</span>, <span class="hljs-attr">height</span>: <span class="hljs-number">300</span> });
+</code></pre>
+<h2 id="electron-&#x914D;&#x7F6E;">Electron &#x914D;&#x7F6E;</h2>
+<h3 id="&#x8BBE;&#x7F6E;-app-&#x5F00;&#x673A;&#x81EA;&#x542F;">&#x8BBE;&#x7F6E; App &#x5F00;&#x673A;&#x81EA;&#x542F;</h3>
+<p>&#x4F7F;&#x7528;&#x63D2;&#x4EF6;&#xFF1A;<a href="https://github.com/Teamwork/node-auto-launch" target="_blank">https://github.com/Teamwork/node-auto-launch</a></p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> AutoLaunch <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;auto-launch&apos;</span>;
+
+<span class="hljs-keyword">const</span> hostsAutoLauncher = <span class="hljs-keyword">new</span> AutoLaunch({
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&apos;Hosts.js&apos;</span>,
+  <span class="hljs-attr">path</span>: <span class="hljs-string">&apos;/Applications/Hosts.js.app&apos;</span>
+});
+
+exports.isEnabled = <span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> hostsAutoLauncher.isEnabled();
+  <span class="hljs-keyword">return</span> result;
+};
+
+exports.enable = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  hostsAutoLauncher.enable();
+};
+
+exports.disable = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  hostsAutoLauncher.disable();
+};
+</code></pre>
+<h3 id="&#x6DFB;&#x52A0;-electron-vue-devtools">&#x6DFB;&#x52A0; Electron Vue DevTools</h3>
+<p>&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x901A;&#x8FC7;&#x63D2;&#x4EF6;&#x5B9E;&#x73B0;&#xFF0C;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/MarshallOfSound/electron-devtools-installer" target="_blank">https://github.com/MarshallOfSound/electron-devtools-installer</a></p>
+<p>devtools.js:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> installExtension, { VUEJS_DEVTOOLS } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;electron-devtools-installer&apos;</span>;
+
+<span class="hljs-built_in">module</span>.exports = installExtension(VUEJS_DEVTOOLS);
+</code></pre>
+<p>&#x7A97;&#x53E3;&#x52A0;&#x8F7D;&#xFF1A;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">if</span> (process.env.NODE_ENV === <span class="hljs-string">&apos;development&apos;</span>) {
+  <span class="hljs-comment">// &#x5F00;&#x53D1;&#x6A21;&#x5F0F;&#x52A0;&#x8F7D; devtools</span>
+  <span class="hljs-keyword">const</span> devtools = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;../lib/devtools&apos;</span>);
+  devtools.then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { <span class="hljs-comment">// &#x6CE8;&#x610F;&#x8C03;&#x7528;&#x65B9;&#x5F0F;</span>
+    <span class="hljs-keyword">this</span>.preferencesWindow.loadURL(<span class="hljs-string">&apos;http://localhost:3000/build/app.html&apos;</span>);
+  });
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-keyword">this</span>.preferencesWindow.loadURL(<span class="hljs-string">`file://<span class="hljs-subst">${path.join(__dirname, <span class="hljs-string">&apos;../../build/app.html&apos;</span>)}</span>`</span>);
+}
+</code></pre>
+<h2 id="&#x8BBE;&#x8BA1;&#x6838;&#x5FC3;&#x6A21;&#x5757;">&#x8BBE;&#x8BA1;&#x6838;&#x5FC3;&#x6A21;&#x5757;</h2>
+<h3 id="i18n">i18n</h3>
+<p>&#x56FD;&#x9645;&#x5316;&#x652F;&#x6301;&#xFF0C;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x96BE;&#x5EA6;&#xFF0C;&#x6839;&#x636E;&#x8BED;&#x8A00;&#x53C2;&#x6570;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x7FFB;&#x8BD1;&#x6587;&#x4EF6;&#xFF0C;&#x914D;&#x7F6E;&#x9ED8;&#x8BA4;&#x8BED;&#x8A00;&#xFF08;&#x82F1;&#x6587;&#xFF09;&#xFF1A;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> { readdirSync } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;fs&apos;</span>;
+
+<span class="hljs-keyword">const</span> locales = readdirSync(__dirname);
+
+<span class="hljs-comment">/*
+ try `zh-CN` first
+ then `zh`
+ or otherwise `default`
+ */</span>
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-function">(<span class="hljs-params">lang = <span class="hljs-string">&apos;default&apos;</span></span>) =&gt;</span> {
+  <span class="hljs-keyword">let</span> locale = locales.filter(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.indexOf(lang) !== <span class="hljs-number">-1</span>)[<span class="hljs-number">0</span>];
+  <span class="hljs-comment">/* eslint import/no-dynamic-require:0,global-require:0 */</span>
+  <span class="hljs-keyword">if</span> (locale !== <span class="hljs-literal">undefined</span>) {
+    <span class="hljs-keyword">const</span> file = <span class="hljs-built_in">require</span>(<span class="hljs-string">`./<span class="hljs-subst">${locale}</span>`</span>);
+    <span class="hljs-keyword">return</span> file;
+  }
+  <span class="hljs-keyword">const</span> langPrefix = lang.split(<span class="hljs-string">&apos;-&apos;</span>)[<span class="hljs-number">0</span>];
+  locale = locales.filter(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.indexOf(langPrefix) !== <span class="hljs-number">-1</span>)[<span class="hljs-number">0</span>];
+  <span class="hljs-keyword">if</span> (locale !== <span class="hljs-literal">undefined</span>) {
+    <span class="hljs-keyword">const</span> file = <span class="hljs-built_in">require</span>(<span class="hljs-string">`./<span class="hljs-subst">${locale}</span>`</span>);
+    <span class="hljs-keyword">return</span> file;
+  }
+  <span class="hljs-keyword">const</span> file = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./default&apos;</span>);
+  <span class="hljs-keyword">return</span> file;
+};
+</code></pre>
+<p>&#x76EE;&#x5F55;&#x7ED3;&#x6784;</p>
+<pre><code>.
+&#x251C;&#x2500;&#x2500; default.js
+&#x251C;&#x2500;&#x2500; index.js
+&#x2514;&#x2500;&#x2500; zh-CN.js
+</code></pre><p>&#x5982;&#x6709;&#x5176;&#x5B83;&#x8BED;&#x8A00;&#xFF0C;&#x6DFB;&#x52A0;&#x5BF9;&#x5E94;&#x8BED;&#x8A00;&#x6587;&#x4EF6;&#x5373;&#x53EF;&#x3002;</p>
+<h3 id="hostsjs2-&#x5206;&#x7EA7;&#x5217;&#x8868;">Hosts.js<sup><a href="#fn_2" id="reffn_2">2</a></sup> &#x5206;&#x7EA7;&#x5217;&#x8868;</h3>
+<blockquote id="fn_2">
+<sup>2</sup>. Hosts.js&#x9879;&#x76EE;&#x6E90;&#x7801;&#xFF1A; <a href="https://github.com/js-cool/Hosts.js" target="_blank">https://github.com/js-cool/Hosts.js</a><a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#x21A9;</a>
+</blockquote>
+<p>&#x7279;&#x70B9;&#xFF1A;</p>
+<ul>
+<li>&#x652F;&#x6301;&#x9876;&#x7EA7;&#x9879;&#x76EE;</li>
+<li>&#x652F;&#x6301;&#x4E8C;&#x7EA7;&#x76EE;&#x5F55;&#x9879;&#x76EE;</li>
+<li>&#x76EE;&#x5F55;&#x4E0D;&#x542B;&#x6709;&#x542F;&#x52A8;&#x72B6;&#x6001;&#xFF0C;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x5B50;&#x9879;&#x76EE;&#x6709;</li>
+<li>&#x652F;&#x6301;&#x6392;&#x5E8F;</li>
+</ul>
+<pre><code class="lang-js">[
+  {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&apos;Default&apos;</span>,
+    <span class="hljs-attr">order</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">id</span>: <span class="hljs-string">&apos;default&apos;</span>,
+    <span class="hljs-attr">type</span>: <span class="hljs-string">&apos;item&apos;</span>,
+    <span class="hljs-attr">enabled</span>: <span class="hljs-literal">true</span>
+  },
+  {
+    <span class="hljs-attr">namename</span>: <span class="hljs-string">&apos;Folder&apos;</span>,
+    <span class="hljs-attr">order</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">id</span>: <span class="hljs-string">&apos;xxx1&apos;</span>,
+    <span class="hljs-attr">type</span>: <span class="hljs-string">&apos;folder&apos;</span>,
+    <span class="hljs-attr">children</span>: [
+      {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&apos;Sub Item 2&apos;</span>,
+        <span class="hljs-attr">order</span>: <span class="hljs-number">2</span>,
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&apos;xxxs2&apos;</span>,
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&apos;item&apos;</span>,
+        <span class="hljs-attr">enabled</span>: <span class="hljs-literal">false</span>
+      },
+      {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&apos;Sub Item 1&apos;</span>,
+        <span class="hljs-attr">order</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&apos;xxxs1&apos;</span>,
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&apos;item&apos;</span>,
+        <span class="hljs-attr">enabled</span>: <span class="hljs-literal">true</span>
+      },
+      {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&apos;Sub Item 4&apos;</span>,
+        <span class="hljs-attr">order</span>: <span class="hljs-number">4</span>,
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&apos;xxxs4&apos;</span>,
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&apos;item&apos;</span>,
+        <span class="hljs-attr">enabled</span>: <span class="hljs-literal">true</span>
+      },
+      {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&apos;Sub Item 3&apos;</span>,
+        <span class="hljs-attr">order</span>: <span class="hljs-number">3</span>,
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&apos;xxxs3&apos;</span>,
+        <span class="hljs-attr">type</span>: <span class="hljs-string">&apos;item&apos;</span>,
+        <span class="hljs-attr">enabled</span>: <span class="hljs-literal">true</span>
+      }
+    ]
+  }
+]
+</code></pre>
+<h3 id="&#x6392;&#x5E8F;&#x7B97;&#x6CD5;">&#x6392;&#x5E8F;&#x7B97;&#x6CD5;</h3>
+<ol>
+<li>&#x5BF9;&#x9876;&#x7EA7;&#x9879;&#x76EE;&#x8FDB;&#x884C;&#x6392;&#x5E8F;</li>
+<li>&#x5BF9;&#x5B50;&#x83DC;&#x5355;&#x9879;&#x76EE;&#x8FDB;&#x884C;&#x6392;&#x5E8F;</li>
+</ol>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> reorderItems = <span class="hljs-function"><span class="hljs-params">arr</span> =&gt;</span> arr.sort(<span class="hljs-function">(<span class="hljs-params">x, y</span>) =&gt;</span> x.order - y.order &gt; <span class="hljs-number">0</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">-1</span>).map(<span class="hljs-function">(<span class="hljs-params">i, iIndex</span>) =&gt;</span> {
+  i.order = iIndex + <span class="hljs-number">1</span>;
+  <span class="hljs-keyword">if</span> (i.type === <span class="hljs-string">&apos;folder&apos;</span>) {
+    i.children = i.children.sort(<span class="hljs-function">(<span class="hljs-params">x, y</span>) =&gt;</span> x.order - y.order &gt; <span class="hljs-number">0</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">-1</span>).map(<span class="hljs-function">(<span class="hljs-params">j, jIndex</span>) =&gt;</span> {
+      j.order = jIndex + <span class="hljs-number">1</span>;
+      <span class="hljs-keyword">return</span> j;
+    });
+  }
+  <span class="hljs-keyword">return</span> i;
+});
+</code></pre>
+<h3 id="&#x5220;&#x9664;&#x5143;&#x7D20;&#x7B97;&#x6CD5;">&#x5220;&#x9664;&#x5143;&#x7D20;&#x7B97;&#x6CD5;</h3>
+<ol>
+<li>&#x9ED8;&#x8BA4;&#x9879;&#x7981;&#x6B62;&#x5220;&#x9664;</li>
+<li>&#x7F16;&#x7A0B;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x5F02;&#x5E38;&#x6355;&#x83B7;&#xFF0C;&#x5B9E;&#x9645;&#x64CD;&#x4F5C;&#x4E2D;&#x4E0D;&#x4F1A;&#x53D1;&#x751F;</li>
+<li>&#x5B50;&#x83DC;&#x5355;&#x8D85;&#x8FC7;&#x4E24;&#x4E2A;&#x9879;&#x76EE;&#x7981;&#x6B62;&#x5220;&#x9664;</li>
+</ol>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> deleteItem = <span class="hljs-function">(<span class="hljs-params">arr, id, pid = <span class="hljs-string">&apos;&apos;</span></span>) =&gt;</span> {
+  <span class="hljs-keyword">if</span>(id===<span class="hljs-string">&apos;default&apos;</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+  <span class="hljs-keyword">let</span> index;
+  <span class="hljs-keyword">if</span> (pid === <span class="hljs-string">&apos;&apos;</span>) {
+    index = arr.findIndex(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.id === id);
+    <span class="hljs-comment">// &#x5F02;&#x5E38;&#x6355;&#x83B7;</span>
+    <span class="hljs-keyword">if</span> (index === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    <span class="hljs-comment">// &#x5B50;&#x83DC;&#x5355;&#x8D85;&#x8FC7;&#x4E24;&#x4E2A;&#x9879;&#x76EE;&#x7981;&#x6B62;&#x5220;&#x9664;</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> arr[index].children === <span class="hljs-string">&apos;object&apos;</span> &amp;&amp; arr[index].children.length &gt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    arr.splice(index, <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">return</span> reorderItems(arr);
+  }
+  index = arr.findIndex(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.id === pid);
+  <span class="hljs-comment">// &#x5F02;&#x5E38;&#x6355;&#x83B7;</span>
+  <span class="hljs-keyword">if</span> (index === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+  arr[index].children = deleteItem(arr[index].children, id);
+  <span class="hljs-keyword">return</span> reorderItems(arr);
+};
+</code></pre>
+<h3 id="&#x6DFB;&#x52A0;&#x5143;&#x7D20;&#x7B97;&#x6CD5;">&#x6DFB;&#x52A0;&#x5143;&#x7D20;&#x7B97;&#x6CD5;</h3>
+<ol>
+<li>&#x4E0D;&#x80FD;&#x5EFA;&#x7ACB;&#x4E8C;&#x7EA7;&#x76EE;&#x5F55;</li>
+<li>&#x7F16;&#x7A0B;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x5F02;&#x5E38;&#x6355;&#x83B7;&#xFF0C;&#x5B9E;&#x9645;&#x64CD;&#x4F5C;&#x4E2D;&#x4E0D;&#x4F1A;&#x53D1;&#x751F;</li>
+</ol>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> uuid = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;uuid&apos;</span>);
+<span class="hljs-keyword">const</span> insertItem = <span class="hljs-function">(<span class="hljs-params">arr, name, pid = <span class="hljs-string">&apos;&apos;</span>, type = <span class="hljs-string">&apos;item&apos;</span></span>) =&gt;</span> {
+  <span class="hljs-keyword">if</span> (type === <span class="hljs-string">&apos;folder&apos;</span> &amp;&amp; pid !== <span class="hljs-string">&apos;&apos;</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+  <span class="hljs-keyword">const</span> item = {
+    name,
+    type,
+    <span class="hljs-attr">order</span>: <span class="hljs-number">-1</span>,
+    <span class="hljs-attr">id</span>: uuid.v4(),
+  };
+  <span class="hljs-keyword">if</span> (type === <span class="hljs-string">&apos;item&apos;</span>) {
+    item.enabled = <span class="hljs-literal">false</span>;
+  } <span class="hljs-keyword">else</span> {
+    item.children = [];
+  }
+  <span class="hljs-keyword">if</span> (pid === <span class="hljs-string">&apos;&apos;</span>) {
+    item.order = arr.length;
+    arr.push(item);
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">const</span> index = arr.findIndex(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.id === pid);
+    <span class="hljs-comment">// &#x5F02;&#x5E38;&#x6355;&#x83B7;</span>
+    <span class="hljs-keyword">if</span> (index === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    item.order = arr[index].length;
+    arr[index].children.push(item);
+  }
+  <span class="hljs-keyword">return</span> reorderItems(arr);
+};
+</code></pre>
+<h3 id="&#x4F4D;&#x7F6E;&#x8C03;&#x6574;&#x7B97;&#x6CD5;">&#x4F4D;&#x7F6E;&#x8C03;&#x6574;&#x7B97;&#x6CD5;</h3>
+<ol>
+<li>Default &#x4E0D;&#x80FD;&#x79FB;&#x52A8;</li>
+<li>&#x7F16;&#x7A0B;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x5F02;&#x5E38;&#x6355;&#x83B7;&#xFF0C;&#x5B9E;&#x9645;&#x64CD;&#x4F5C;&#x4E2D;&#x4E0D;&#x4F1A;&#x53D1;&#x751F;</li>
+</ol>
+<h4 id="&#x4E0A;&#x79FB;">&#x4E0A;&#x79FB;</h4>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> moveUpItem = <span class="hljs-function">(<span class="hljs-params">arrOrigin, id, pid = <span class="hljs-string">&apos;&apos;</span></span>) =&gt;</span> {
+  <span class="hljs-keyword">if</span> (id === <span class="hljs-string">&apos;default&apos;</span>) <span class="hljs-keyword">return</span> arrOrigin;
+  <span class="hljs-keyword">const</span> arr = reorderItems(arrOrigin);
+  <span class="hljs-keyword">let</span> index;
+  <span class="hljs-keyword">if</span> (pid === <span class="hljs-string">&apos;&apos;</span>) {
+    index = arr.findIndex(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.id === id);
+    <span class="hljs-keyword">if</span> (index === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">if</span> (index - <span class="hljs-number">1</span> === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> arr;
+    arr[index].order -= <span class="hljs-number">1</span>;
+    arr[index - <span class="hljs-number">1</span>].order += <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">return</span> arr;
+  }
+  index = arr.findIndex(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.id === pid);
+  <span class="hljs-comment">// &#x5F02;&#x5E38;&#x6355;&#x83B7;</span>
+  <span class="hljs-keyword">if</span> (index === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+  arr[index].children = moveUpItem(arr[index].children, id);
+  <span class="hljs-keyword">return</span> reorderItems(arr);
+};
+</code></pre>
+<h4 id="&#x4E0B;&#x79FB;">&#x4E0B;&#x79FB;</h4>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> moveDownItem = <span class="hljs-function">(<span class="hljs-params">arrOrigin, id, pid = <span class="hljs-string">&apos;&apos;</span></span>) =&gt;</span> {
+  <span class="hljs-keyword">if</span> (id === <span class="hljs-string">&apos;default&apos;</span>) <span class="hljs-keyword">return</span> arrOrigin;
+  <span class="hljs-keyword">const</span> arr = reorderItems(arrOrigin);
+  <span class="hljs-keyword">let</span> index;
+  <span class="hljs-keyword">if</span> (pid === <span class="hljs-string">&apos;&apos;</span>) {
+    index = arr.findIndex(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.id === id);
+    <span class="hljs-keyword">if</span> (index === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">if</span> (index + <span class="hljs-number">1</span> === arr.length) <span class="hljs-keyword">return</span> arr;
+    arr[index].order += <span class="hljs-number">1</span>;
+    arr[index + <span class="hljs-number">1</span>].order -= <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">return</span> arr;
+  }
+  index = arr.findIndex(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.id === pid);
+  <span class="hljs-comment">// &#x5F02;&#x5E38;&#x6355;&#x83B7;</span>
+  <span class="hljs-keyword">if</span> (index === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+  arr[index].children = moveUpItem(arr[index].children, id);
+  <span class="hljs-keyword">return</span> reorderItems(arr);
+};
+</code></pre>
+<p>&#x65B0;&#x589E;&#x4E86;&#x91CD;&#x547D;&#x540D;&#x548C;&#x5207;&#x6362;&#x542F;&#x7528;&#x72B6;&#x6001;&#x7684;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x4E0D;&#x518D;&#x5C55;&#x5F00;&#x3002;</p>
+<h3 id="&#x4F18;&#x5316;">&#x4F18;&#x5316;</h3>
+<ul>
+<li>&#x4EE5; class &#x5F62;&#x5F0F;&#x5C01;&#x88C5;</li>
+<li>&#x629B;&#x51FA;&#x7B80;&#x5355;&#x7684;&#x5916;&#x90E8;&#x63A5;&#x53E3;</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-comment">/* eslint class-methods-use-this: [2, { &quot;exceptMethods&quot;: [&quot;_deleteItem&quot;,&quot;_moveUpItem&quot;,&quot;_moveDownItem&quot;] }] */</span>
+
+<span class="hljs-keyword">import</span> { existsSync, mkdirSync, writeFileSync, readFileSync } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;fs&apos;</span>;
+<span class="hljs-keyword">import</span> uuid <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;uuid&apos;</span>;
+<span class="hljs-keyword">import</span> locales <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../locales&apos;</span>;
+
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Category</span> </span>{
+  <span class="hljs-keyword">constructor</span>(lang) {
+    <span class="hljs-keyword">this</span>.locale = locales(lang);
+    <span class="hljs-keyword">this</span>.DIR_PATH = <span class="hljs-string">`<span class="hljs-subst">${process.env.HOME}</span>/.hosts.js`</span>;
+    <span class="hljs-keyword">this</span>.FILE_PATH = <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.DIR_PATH}</span>/.category.js`</span>;
+    <span class="hljs-keyword">this</span>.init();
+  }
+
+  init() {
+    <span class="hljs-keyword">const</span> defaultData = [{
+      <span class="hljs-attr">name</span>: <span class="hljs-keyword">this</span>.locale.default,
+      <span class="hljs-attr">order</span>: <span class="hljs-number">1</span>,
+      <span class="hljs-attr">id</span>: <span class="hljs-string">&apos;default&apos;</span>,
+      <span class="hljs-attr">type</span>: <span class="hljs-string">&apos;item&apos;</span>,
+      <span class="hljs-attr">enabled</span>: <span class="hljs-literal">true</span>
+    }];
+    <span class="hljs-keyword">if</span> (!existsSync(<span class="hljs-keyword">this</span>.DIR_PATH)) {
+      mkdirSync(<span class="hljs-keyword">this</span>.DIR_PATH);
+    }
+    <span class="hljs-keyword">if</span> (!existsSync(<span class="hljs-keyword">this</span>.FILE_PATH)) {
+      <span class="hljs-keyword">this</span>.data = defaultData;
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">const</span> data = readFileSync(<span class="hljs-keyword">this</span>.FILE_PATH, <span class="hljs-string">&apos;utf-8&apos;</span>);
+      <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">this</span>.data = <span class="hljs-built_in">JSON</span>.parse(data);
+      } <span class="hljs-keyword">catch</span> (e) {
+        <span class="hljs-keyword">this</span>.data = defaultData;
+      }
+    }
+  }
+
+  reorder() {
+    <span class="hljs-keyword">this</span>.data = <span class="hljs-keyword">this</span>.data.sort(<span class="hljs-function">(<span class="hljs-params">x, y</span>) =&gt;</span> x.order - y.order &gt; <span class="hljs-number">0</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">-1</span>)
+      .map(<span class="hljs-function">(<span class="hljs-params">i, iIndex</span>) =&gt;</span> {
+        i.order = iIndex + <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">if</span> (i.type === <span class="hljs-string">&apos;folder&apos;</span>) {
+          i.children = i.children.sort(<span class="hljs-function">(<span class="hljs-params">x, y</span>) =&gt;</span> x.order - y.order &gt; <span class="hljs-number">0</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">-1</span>).map(<span class="hljs-function">(<span class="hljs-params">j, jIndex</span>) =&gt;</span> {
+            j.order = jIndex + <span class="hljs-number">1</span>;
+            <span class="hljs-keyword">return</span> j;
+          });
+        }
+
+        <span class="hljs-keyword">return</span> i;
+      });
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+  }
+
+  _deleteItem(arr, id) {
+    <span class="hljs-keyword">const</span> index = arr.findIndex(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.id === id);
+    <span class="hljs-comment">// &#x5F02;&#x5E38;&#x6355;&#x83B7;</span>
+    <span class="hljs-keyword">if</span> (index === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    <span class="hljs-comment">// &#x5B50;&#x83DC;&#x5355;&#x8D85;&#x8FC7;&#x4E24;&#x4E2A;&#x9879;&#x76EE;&#x7981;&#x6B62;&#x5220;&#x9664;</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> arr[index].children === <span class="hljs-string">&apos;object&apos;</span> &amp;&amp; arr[index].children.length &gt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    arr.splice(index, <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">return</span> arr;
+  }
+
+  _moveUpItem(arr, id) {
+    <span class="hljs-keyword">const</span> index = arr.findIndex(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.id === id);
+    <span class="hljs-keyword">if</span> (index === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">if</span> (index - <span class="hljs-number">1</span> === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    arr[index].order -= <span class="hljs-number">1</span>;
+    arr[index - <span class="hljs-number">1</span>].order += <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">return</span> arr;
+  }
+
+  _moveDownItem(arr, id) {
+    <span class="hljs-keyword">const</span> index = arr.findIndex(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.id === id);
+    <span class="hljs-keyword">if</span> (index === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">if</span> (index + <span class="hljs-number">1</span> === arr.length) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    arr[index].order += <span class="hljs-number">1</span>;
+    arr[index + <span class="hljs-number">1</span>].order -= <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">return</span> arr;
+  }
+
+  <span class="hljs-keyword">delete</span>(id, pid = <span class="hljs-string">&apos;&apos;</span>) {
+    <span class="hljs-keyword">if</span> (pid === <span class="hljs-string">&apos;&apos;</span>) {
+      <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">this</span>._deleteItem(<span class="hljs-keyword">this</span>.data, id);
+      <span class="hljs-keyword">if</span> (data === <span class="hljs-literal">false</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+      <span class="hljs-keyword">this</span>.data = data;
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">const</span> index = <span class="hljs-keyword">this</span>.data.findIndex(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.id === pid);
+      <span class="hljs-comment">// &#x5F02;&#x5E38;&#x6355;&#x83B7;</span>
+      <span class="hljs-keyword">if</span> (index === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+      <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">this</span>._deleteItem(<span class="hljs-keyword">this</span>.data[index].children, id);
+      <span class="hljs-keyword">if</span> (data === <span class="hljs-literal">false</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+      <span class="hljs-keyword">this</span>.data[index].children = data;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.reorder();
+  }
+
+  insert(name, pid = <span class="hljs-string">&apos;&apos;</span>, type = <span class="hljs-string">&apos;item&apos;</span>) {
+    <span class="hljs-keyword">if</span> ([<span class="hljs-string">&apos;item&apos;</span>, <span class="hljs-string">&apos;folder&apos;</span>].indexOf(type) === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">if</span> (type === <span class="hljs-string">&apos;folder&apos;</span> &amp;&amp; pid !== <span class="hljs-string">&apos;&apos;</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">const</span> item = {
+      name,
+      type,
+      <span class="hljs-attr">id</span>: uuid.v4()
+    };
+    <span class="hljs-keyword">if</span> (type === <span class="hljs-string">&apos;item&apos;</span>) {
+      item.enabled = <span class="hljs-literal">false</span>;
+    } <span class="hljs-keyword">else</span> {
+      item.children = [];
+    }
+    <span class="hljs-keyword">if</span> (pid === <span class="hljs-string">&apos;&apos;</span>) {
+      item.order = <span class="hljs-keyword">this</span>.data.length + <span class="hljs-number">1</span>;
+      <span class="hljs-keyword">this</span>.data.push(item);
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">const</span> index = <span class="hljs-keyword">this</span>.data.findIndex(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.id === pid);
+      <span class="hljs-comment">// &#x5F02;&#x5E38;&#x6355;&#x83B7;</span>
+      <span class="hljs-keyword">if</span> (index === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+      item.order = <span class="hljs-keyword">this</span>.data[index].children.length + <span class="hljs-number">1</span>;
+      <span class="hljs-keyword">this</span>.data[index].children.push(item);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.reorder();
+  }
+
+  moveUp(id, pid = <span class="hljs-string">&apos;&apos;</span>) {
+    <span class="hljs-keyword">if</span> (id === <span class="hljs-string">&apos;default&apos;</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">let</span> index;
+    <span class="hljs-keyword">if</span> (pid === <span class="hljs-string">&apos;&apos;</span>) {
+      index = <span class="hljs-keyword">this</span>.data.findIndex(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.id === id);
+      <span class="hljs-keyword">if</span> (index === <span class="hljs-number">1</span> || index === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+      <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">this</span>._moveUpItem(<span class="hljs-keyword">this</span>.data, id);
+      <span class="hljs-keyword">if</span> (data === <span class="hljs-literal">false</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+      <span class="hljs-keyword">this</span>.data = data;
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.reorder();
+    }
+    index = <span class="hljs-keyword">this</span>.data.findIndex(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.id === pid);
+    <span class="hljs-comment">// &#x5F02;&#x5E38;&#x6355;&#x83B7;</span>
+    <span class="hljs-keyword">if</span> (index === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">this</span>._moveUpItem(<span class="hljs-keyword">this</span>.data[index].children, id);
+    <span class="hljs-keyword">if</span> (data === <span class="hljs-literal">false</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">this</span>.data[index].children = data;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.reorder();
+  }
+
+  moveDown(id, pid = <span class="hljs-string">&apos;&apos;</span>) {
+    <span class="hljs-keyword">if</span> (id === <span class="hljs-string">&apos;default&apos;</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">if</span> (pid === <span class="hljs-string">&apos;&apos;</span>) {
+      <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">this</span>._moveDownItem(<span class="hljs-keyword">this</span>.data, id);
+      <span class="hljs-keyword">if</span> (data === <span class="hljs-literal">false</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+      <span class="hljs-keyword">this</span>.data = data;
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.reorder();
+    }
+    <span class="hljs-keyword">const</span> index = <span class="hljs-keyword">this</span>.data.findIndex(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.id === pid);
+    <span class="hljs-comment">// &#x5F02;&#x5E38;&#x6355;&#x83B7;</span>
+    <span class="hljs-keyword">if</span> (index === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">this</span>._moveDownItem(<span class="hljs-keyword">this</span>.data[index].children, id);
+    <span class="hljs-keyword">if</span> (data === <span class="hljs-literal">false</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">this</span>.data[index].children = data;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.reorder();
+  }
+
+  rename(name, id, pid = <span class="hljs-string">&apos;&apos;</span>) {
+    <span class="hljs-keyword">if</span> (pid === <span class="hljs-string">&apos;&apos;</span>) {
+      <span class="hljs-keyword">const</span> index = <span class="hljs-keyword">this</span>.data.findIndex(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.id === id);
+      <span class="hljs-comment">// &#x5F02;&#x5E38;&#x6355;&#x83B7;</span>
+      <span class="hljs-keyword">if</span> (index === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+      <span class="hljs-keyword">this</span>.data[index].name = name;
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">const</span> index = <span class="hljs-keyword">this</span>.data.findIndex(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.id === pid);
+      <span class="hljs-comment">// &#x5F02;&#x5E38;&#x6355;&#x83B7;</span>
+      <span class="hljs-keyword">if</span> (index === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+      <span class="hljs-keyword">const</span> indexChildren = <span class="hljs-keyword">this</span>.data[index].children.findIndex(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.id === id);
+      <span class="hljs-comment">// &#x5F02;&#x5E38;&#x6355;&#x83B7;</span>
+      <span class="hljs-keyword">if</span> (indexChildren === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+      <span class="hljs-keyword">this</span>.data[index].children[indexChildren].name = name;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.reorder();
+  }
+
+  toggle(id, pid = <span class="hljs-string">&apos;&apos;</span>) {
+    <span class="hljs-keyword">if</span> (id === <span class="hljs-string">&apos;default&apos;</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">if</span> (pid === <span class="hljs-string">&apos;&apos;</span>) {
+      <span class="hljs-keyword">const</span> index = <span class="hljs-keyword">this</span>.data.findIndex(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.id === id);
+      <span class="hljs-comment">// &#x5F02;&#x5E38;&#x6355;&#x83B7;</span>
+      <span class="hljs-keyword">if</span> (index === <span class="hljs-number">-1</span> || !<span class="hljs-built_in">Reflect</span>.has(<span class="hljs-keyword">this</span>.data[index], <span class="hljs-string">&apos;enabled&apos;</span>)) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+      <span class="hljs-keyword">this</span>.data[index].enabled = !<span class="hljs-keyword">this</span>.data[index].enabled;
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">const</span> index = <span class="hljs-keyword">this</span>.data.findIndex(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.id === pid);
+      <span class="hljs-comment">// &#x5F02;&#x5E38;&#x6355;&#x83B7;</span>
+      <span class="hljs-keyword">if</span> (index === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+      <span class="hljs-keyword">const</span> indexChildren = <span class="hljs-keyword">this</span>.data[index].children.findIndex(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> x.id === id);
+      <span class="hljs-comment">// &#x5F02;&#x5E38;&#x6355;&#x83B7;</span>
+      <span class="hljs-keyword">if</span> (indexChildren === <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+      <span class="hljs-keyword">this</span>.data[index].children[indexChildren].enabled = !<span class="hljs-keyword">this</span>.data[index].children[indexChildren].enabled;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+  }
+
+  reload() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.data;
+  }
+
+  save() {
+    writeFileSync(<span class="hljs-keyword">this</span>.FILE_PATH, <span class="hljs-built_in">JSON</span>.stringify(<span class="hljs-keyword">this</span>.data, <span class="hljs-literal">null</span>, <span class="hljs-number">2</span>));
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+  }
+};
+</code></pre>
+<p>&#x8BE5;&#x6587;&#x4EF6;&#x6E90;&#x7801;&#x5982;&#x6709;&#x66F4;&#x65B0;&#xFF0C;&#x5728;&#xFF1A; <a href="https://github.com/js-cool/Hosts.js/blob/master/src/lib/category.js" target="_blank">https://github.com/js-cool/Hosts.js/blob/master/src/lib/category.js</a> &#x4E0A;&#x67E5;&#x770B;&#x3002;</p>
+<h4 id="demo">Demo</h4>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> Category <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./category&apos;</span>;
+
+<span class="hljs-keyword">const</span> categories = <span class="hljs-keyword">new</span> Category();
+
+<span class="hljs-comment">// &#x589E;&#x52A0;&#x76EE;&#x5F55;&#xFF1A;</span>
+categories.insert(<span class="hljs-string">&apos;&#x76EE;&#x5F55;&#x540D;&#x79F0;&apos;</span>, <span class="hljs-string">&apos;&apos;</span>, <span class="hljs-string">&apos;folder&apos;</span>);
+
+<span class="hljs-comment">// &#x589E;&#x52A0;&#x9879;&#x76EE;&#xFF1A;</span>
+categories.insert(<span class="hljs-string">&apos;&#x9879;&#x76EE;&#x540D;&#x79F0;&apos;</span>);
+categories.insert(<span class="hljs-string">&apos;&#x9879;&#x76EE;&#x540D;&#x79F0;&apos;</span>, <span class="hljs-string">&apos;&#x76EE;&#x5F55; id&apos;</span>);
+
+<span class="hljs-comment">// &#x5220;&#x9664;&#x9879;&#x76EE;&#xFF1A;</span>
+categories.delete(<span class="hljs-string">&apos;&#x6839;&#x76EE;&#x5F55;&#x9879;&#x76EE; id&apos;</span>);
+categories.delete(<span class="hljs-string">&apos;&#x9879;&#x76EE; id&apos;</span>, <span class="hljs-string">&apos;&#x76EE;&#x5F55; id&apos;</span>);
+
+<span class="hljs-comment">// &#x5411;&#x4E0A;&#x79FB;&#x52A8;</span>
+categories.moveUp(<span class="hljs-string">&apos;&#x6839;&#x76EE;&#x5F55;&#x9879;&#x76EE; id&apos;</span>);
+categories.moveUp(<span class="hljs-string">&apos;&#x9879;&#x76EE; id&apos;</span>, <span class="hljs-string">&apos;&#x76EE;&#x5F55; id&apos;</span>);
+
+<span class="hljs-comment">// &#x5411;&#x4E0B;&#x79FB;&#x52A8;</span>
+categories.moveDown(<span class="hljs-string">&apos;&#x6839;&#x76EE;&#x5F55;&#x9879;&#x76EE; id&apos;</span>);
+categories.moveDown(<span class="hljs-string">&apos;&#x9879;&#x76EE; id&apos;</span>, <span class="hljs-string">&apos;&#x76EE;&#x5F55; id&apos;</span>);
+
+<span class="hljs-comment">// &#x91CD;&#x547D;&#x540D;</span>
+categories.rename(<span class="hljs-string">&apos;&#x9879;&#x76EE;&#x540D;&#x79F0;&apos;</span>, <span class="hljs-string">&apos;&#x6839;&#x76EE;&#x5F55;&#x9879;&#x76EE; id&apos;</span>);
+categories.rename(<span class="hljs-string">&apos;&#x9879;&#x76EE;&#x540D;&#x79F0;&apos;</span>, <span class="hljs-string">&apos;&#x9879;&#x76EE; id&apos;</span>, <span class="hljs-string">&apos;&#x76EE;&#x5F55; id&apos;</span>);
+
+<span class="hljs-comment">// &#x5207;&#x6362;&#x542F;&#x7528;&#x72B6;&#x6001;</span>
+categories.toggle(<span class="hljs-string">&apos;&#x6839;&#x76EE;&#x5F55;&#x9879;&#x76EE; id&apos;</span>);
+categories.toggle(<span class="hljs-string">&apos;&#x9879;&#x76EE; id&apos;</span>, <span class="hljs-string">&apos;&#x76EE;&#x5F55; id&apos;</span>);
+
+<span class="hljs-comment">// &#x4FDD;&#x5B58;&#x66F4;&#x6539;&#x5230;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</span>
+categories.save();
+
+<span class="hljs-comment">// &#x83B7;&#x53D6;&#x6700;&#x65B0;&#x7684;&#x5217;&#x8868;&#x6570;&#x636E;</span>
+<span class="hljs-keyword">const</span> data = categories.reload();
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(data, <span class="hljs-literal">null</span>, <span class="hljs-number">2</span>));
+</code></pre>
+
+                                    
+                                    </section>
+                                
+                            </div>
+                        </div>
+                    
+                </div>
+
+                
+                    
+                    <a href="meta.html" class="navigation navigation-prev " aria-label="Previous page: 元编程构造优雅解决方案">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    
+                    
+                    <a href="mixed-project.html" class="navigation navigation-next " aria-label="Next page: 混合Web应用实践">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    
+                
+            
+        </div>
+
+        <script>
+            var gitbook = gitbook || [];
+            gitbook.push(function() {
+                gitbook.page.hasChanged({"page":{"title":"Electron桌面应用","level":"3.4.2","depth":2,"next":{"title":"混合Web应用实践","level":"3.4.3","depth":2,"path":"experience/advanced/mixed-project.md","ref":"experience/advanced/mixed-project.md","articles":[]},"previous":{"title":"元编程构造优雅解决方案","level":"3.4.1","depth":2,"path":"experience/advanced/meta.md","ref":"experience/advanced/meta.md","articles":[]},"dir":"ltr"},"config":{"plugins":["addcssjs","-autotheme","-atoc","-fancybox","donate","-github","-disqus","-duoshuo","-edit-link","adsense","-maxiang","wordcount","theme-material","highlight","-lunr","-fontsettings","-sharing","-search","sitemap"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"introduction-text":"封面","fancybox":{},"github":{"url":"https://coding.net/u/willin/p/leader.js.cool/git"},"wordcount":{},"atoc":{"addClass":true,"className":"atoc"},"theme-material":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"adsense":{"client":"ca-pub-5059418763237956","slot":"2139110924","format":"auto","element":".page-inner section"},"addcssjs":{"css":[],"js":["_static/main.js"]},"duoshuo":{"short_name":"leader-js","theme":"default"},"donate":{"alipay":"http://go.sh.gg/images/alipay.png","alipayText":"支付宝打赏","button":"赏","title":"如果您觉得受益，请打赏支持！","wechat":"http://go.sh.gg/images/wx.png","wechatText":"微信打赏"},"fontsettings":{"family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://leader.js.cool/"},"autotheme":{"white":[9,10,11,12,13,14,15,16],"sepia":[6,7,8,17,18,19],"night":[20,21,22,23,0,1,2,3,4,5]},"edit-link":{"base":"https://coding.net/u/willin/p/leader.js.cool/git/edit/master/","label":"编辑此页"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"toc":true,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":true},"structure":{"langs":"LANGS.md","readme":"INTRO.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"不可替代的团队领袖培养计划","language":"zh-cn","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"作者":"https://willin.wang/","Github":"https://github.com/js-cool/leader.js.cool","Coding":"https://coding.net/u/willin/p/leader.js.cool/git"}},"gitbook":"=3.2.2","description":"Author: Willin Wang"},"file":{"path":"experience/advanced/desktop-app.md","mtime":"2017-02-15T16:44:48.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-03-06T02:37:48.264Z"},"basePath":"../..","book":{"language":""}});
+            });
+        </script>
+    </div>
+</main>
+
+<aside>
+    <div id="slide-out" class="book-summary side-nav fixed">
+        
+            
+            
+                <div role="navigation">
+                
+
+
+<ul class="summary">
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+
+                
+                    <a href="../../">
+                
+                        
+                        前言
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../COPYRIGHT.html">
+            
+
+                
+                    <a href="../../COPYRIGHT.html">
+                
+                        
+                        版权
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">知识篇</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../basic/osx.html">
+            
+
+                
+                    <a href="../../basic/osx.html">
+                
+                        
+                        操作系统(OS X)
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">必备神器</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.2.1" data-path="../../basic/resource/brew.html">
+            
+
+                
+                    <a href="../../basic/resource/brew.html">
+                
+                        
+                        Brew
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="../../basic/resource/iterm.html">
+            
+
+                
+                    <a href="../../basic/resource/iterm.html">
+                
+                        
+                        iTerm
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="../../basic/resource/ide.html">
+            
+
+                
+                    <a href="../../basic/resource/ide.html">
+                
+                        
+                        IDE
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.4" data-path="../../basic/resource/ss.html">
+            
+
+                
+                    <a href="../../basic/resource/ss.html">
+                
+                        
+                        科学上网
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.5" data-path="../../basic/resource/online.html">
+            
+
+                
+                    <a href="../../basic/resource/online.html">
+                
+                        
+                        在线资源
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.6" data-path="../../basic/resource/offline.html">
+            
+
+                
+                    <a href="../../basic/resource/offline.html">
+                
+                        
+                        离线资源
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.7" data-path="../../basic/resource/frontend.html">
+            
+
+                
+                    <a href="../../basic/resource/frontend.html">
+                
+                        
+                        前端资源
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">基础知识</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.3.1" data-path="../../basic/knowledge/http.html">
+            
+
+                
+                    <a href="../../basic/knowledge/http.html">
+                
+                        
+                        HTTP
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" data-path="../../basic/knowledge/shell.html">
+            
+
+                
+                    <a href="../../basic/knowledge/shell.html">
+                
+                        
+                        SHELL
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" data-path="../../basic/knowledge/git.html">
+            
+
+                
+                    <a href="../../basic/knowledge/git.html">
+                
+                        
+                        GIT
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.4" data-path="../../basic/knowledge/promise.html">
+            
+
+                
+                    <a href="../../basic/knowledge/promise.html">
+                
+                        
+                        Promise
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.5" data-path="../../basic/knowledge/docker.html">
+            
+
+                
+                    <a href="../../basic/knowledge/docker.html">
+                
+                        
+                        Docker 加速
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">Vanilla JS</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.4.1" data-path="../../basic/js/tricks.html">
+            
+
+                
+                    <a href="../../basic/js/tricks.html">
+                
+                        
+                        小技巧
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2" data-path="../../basic/js/fetch.html">
+            
+
+                
+                    <a href="../../basic/js/fetch.html">
+                
+                        
+                        Fetch AJAX
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3" data-path="../../basic/js/es.html">
+            
+
+                
+                    <a href="../../basic/js/es.html">
+                
+                        
+                        ES Next
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4" data-path="../../basic/js/map.html">
+            
+
+                
+                    <a href="../../basic/js/map.html">
+                
+                        
+                        Map
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.5" data-path="../../basic/js/reduce.html">
+            
+
+                
+                    <a href="../../basic/js/reduce.html">
+                
+                        
+                        Reduce
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.6" data-path="../../basic/js/regexp.html">
+            
+
+                
+                    <a href="../../basic/js/regexp.html">
+                
+                        
+                        正则替换
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">Node.js</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.5.1" data-path="../../basic/node/pkg.html">
+            
+
+                
+                    <a href="../../basic/node/pkg.html">
+                
+                        
+                        包管理
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.2" data-path="../../basic/node/hexo.html">
+            
+
+                
+                    <a href="../../basic/node/hexo.html">
+                
+                        
+                        Hexo静态博客搭建
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.3" data-path="../../basic/node/gitbook.html">
+            
+
+                
+                    <a href="../../basic/node/gitbook.html">
+                
+                        
+                        GitBook静态文档生成
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.4" data-path="../../basic/node/babel.html">
+            
+
+                
+                    <a href="../../basic/node/babel.html">
+                
+                        
+                        Babel
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.5" data-path="../../basic/node/test.html">
+            
+
+                
+                    <a href="../../basic/node/test.html">
+                
+                        
+                        Test
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.6" data-path="../../basic/node/benchmark.html">
+            
+
+                
+                    <a href="../../basic/node/benchmark.html">
+                
+                        
+                        Benchmark
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.7" data-path="../../basic/node/npm.html">
+            
+
+                
+                    <a href="../../basic/node/npm.html">
+                
+                        
+                        造轮子(NPM)篇
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">DB</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.6.1" data-path="../../basic/db/mysql.html">
+            
+
+                
+                    <a href="../../basic/db/mysql.html">
+                
+                        
+                        MySQL
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.2" data-path="../../basic/db/redis.html">
+            
+
+                
+                    <a href="../../basic/db/redis.html">
+                
+                        
+                        Redis
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">常用框架</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.7.1" data-path="../../basic/framework/hapi.html">
+            
+
+                
+                    <a href="../../basic/framework/hapi.html">
+                
+                        
+                        HAPI
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.2" data-path="../../basic/framework/socketio.html">
+            
+
+                
+                    <a href="../../basic/framework/socketio.html">
+                
+                        
+                        Socket.IO
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.3" data-path="../../basic/framework/electron.html">
+            
+
+                
+                    <a href="../../basic/framework/electron.html">
+                
+                        
+                        Electron
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.4" data-path="../../basic/framework/udp.html">
+            
+
+                
+                    <a href="../../basic/framework/udp.html">
+                
+                        
+                        UDP
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.5" data-path="../../basic/framework/koa.html">
+            
+
+                
+                    <a href="../../basic/framework/koa.html">
+                
+                        
+                        Koa
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.6" data-path="../../basic/framework/vue.html">
+            
+
+                
+                    <a href="../../basic/framework/vue.html">
+                
+                        
+                        Vue
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.7" data-path="../../basic/framework/redux.html">
+            
+
+                
+                    <a href="../../basic/framework/redux.html">
+                
+                        
+                        React Redux
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.8" data-path="../../basic/framework/nativescript.html">
+            
+
+                
+                    <a href="../../basic/framework/nativescript.html">
+                
+                        
+                        NativeScript
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">算法入门（使用ES 6）</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="2.8.1" data-path="../../basic/algorithm/sum-of-odd-numbers.html">
+            
+
+                
+                    <a href="../../basic/algorithm/sum-of-odd-numbers.html">
+                
+                        
+                        奇数求和
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8.2" data-path="../../basic/algorithm/find-the-stray-number.html">
+            
+
+                
+                    <a href="../../basic/algorithm/find-the-stray-number.html">
+                
+                        
+                        查找杂散数
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">经验篇</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../design/">
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">设计</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="3.1.1" data-path="../design/requirements.html">
+            
+
+                
+                    <a href="../design/requirements.html">
+                
+                        
+                        需求分析
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../design/product.html">
+            
+
+                
+                    <a href="../design/product.html">
+                
+                        
+                        产品设计
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../design/architecture.html">
+            
+
+                
+                    <a href="../design/architecture.html">
+                
+                        
+                        系统架构
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../design/system.html">
+            
+
+                
+                    <a href="../design/system.html">
+                
+                        
+                        系统架构设计实践
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../project/">
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">项目</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="3.2.1" data-path="../project/structure.html">
+            
+
+                
+                    <a href="../project/structure.html">
+                
+                        
+                        项目结构
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../project/develop.html">
+            
+
+                
+                    <a href="../project/develop.html">
+                
+                        
+                        开发指南
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.3" data-path="../project/user/module.html">
+            
+
+                
+                    <a href="../project/user/module.html">
+                
+                        
+                        功能模块设计
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.4" data-path="../project/user/db.html">
+            
+
+                
+                    <a href="../project/user/db.html">
+                
+                        
+                        数据库设计
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.5" data-path="../project/user/cache.html">
+            
+
+                
+                    <a href="../project/user/cache.html">
+                
+                        
+                        缓存设计
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.6" data-path="../project/user/bdd.html">
+            
+
+                
+                    <a href="../project/user/bdd.html">
+                
+                        
+                        BDD实践
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.7" data-path="../project/user/particulars.html">
+            
+
+                
+                    <a href="../project/user/particulars.html">
+                
+                        
+                        代码细节处理
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../operation/">
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">运维</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="3.3.1" data-path="../operation/server.html">
+            
+
+                
+                    <a href="../operation/server.html">
+                
+                        
+                        服务器配置
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="../operation/pm2.html">
+            
+
+                
+                    <a href="../operation/pm2.html">
+                
+                        
+                        PM2守护进程
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.3" data-path="../operation/later.html">
+            
+
+                
+                    <a href="../operation/later.html">
+                
+                        
+                        Later计划任务
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.4" data-path="../operation/workflow.html">
+            
+
+                
+                    <a href="../operation/workflow.html">
+                
+                        
+                        CI工作流
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.5" data-path="../operation/restarter.html">
+            
+
+                
+                    <a href="../operation/restarter.html">
+                
+                        
+                        重启服务
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.6" data-path="../operation/rollback.html">
+            
+
+                
+                    <a href="../operation/rollback.html">
+                
+                        
+                        版本回退
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.7" data-path="../operation/certbot.html">
+            
+
+                
+                    <a href="../operation/certbot.html">
+                
+                        
+                        CertBot证书
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">进阶</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="3.4.1" data-path="meta.html">
+            
+
+                
+                    <a href="meta.html">
+                
+                        
+                        元编程构造优雅解决方案
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.4.2" data-path="desktop-app.html">
+            
+
+                
+                    <a href="desktop-app.html">
+                
+                        
+                        Electron桌面应用
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4.3" data-path="mixed-project.html">
+            
+
+                
+                    <a href="mixed-project.html">
+                
+                        
+                        混合Web应用实践
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">思想篇</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">能力</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../mind/capability/define-good-employee.html">
+            
+
+                
+                    <a href="../../mind/capability/define-good-employee.html">
+                
+                        
+                        好员工的定义
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../../mind/capability/growth.html">
+            
+
+                
+                    <a href="../../mind/capability/growth.html">
+                
+                        
+                        新人成长
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../../mind/capability/study.html">
+            
+
+                
+                    <a href="../../mind/capability/study.html">
+                
+                        
+                        学习能力
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../../mind/capability/solving.html">
+            
+
+                
+                    <a href="../../mind/capability/solving.html">
+                
+                        
+                        问题处理能力
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">思维模式</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="4.2.1" data-path="../../mind/thinking/shit.html">
+            
+
+                
+                    <a href="../../mind/thinking/shit.html">
+                
+                        
+                        忽略细节，就是屎
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="../../mind/thinking/dialectical.html">
+            
+
+                
+                    <a href="../../mind/thinking/dialectical.html">
+                
+                        
+                        辩证思维
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="../../mind/thinking/ocd.html">
+            
+
+                
+                    <a href="../../mind/thinking/ocd.html">
+                
+                        
+                        克服强迫症
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.4" data-path="../../mind/thinking/buckets.html">
+            
+
+                
+                    <a href="../../mind/thinking/buckets.html">
+                
+                        
+                        木桶效应
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" >
+            
+                <ul class="articles collapsible popout" data-collapsible="accordion">
+                    <li><a class="collapsible-header waves-effect waves-teal">团队建设</a>
+                        <ul class="collapsible-body">
+                            
+    
+        <li class="chapter " data-level="4.3.1" data-path="../../mind/team/hire.html">
+            
+
+                
+                    <a href="../../mind/team/hire.html">
+                
+                        
+                        招聘原则
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.2" data-path="../../mind/team/meeting.html">
+            
+
+                
+                    <a href="../../mind/team/meeting.html">
+                
+                        
+                        会议原则
+                
+                    </a>
+                
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3.3" data-path="../../mind/team/concept.html">
+            
+
+                
+                    <a href="../../mind/team/concept.html">
+                
+                        
+                        人才理念
+                
+                    </a>
+                
+
+            
+        </li>
+    
+
+                        </ul>
+                    </li>
+                </ul>
+            
+        </li>
+    
+
+    
+
+
+    
+        <li class="divider"></li>
+        
+            <li>
+                <a href="https://willin.wang/" target="_blank" class="custom-link">作者</a>
+            </li>
+        
+            <li>
+                <a href="https://github.com/js-cool/leader.js.cool" target="_blank" class="custom-link">Github</a>
+            </li>
+        
+            <li>
+                <a href="https://coding.net/u/willin/p/leader.js.cool/git" target="_blank" class="custom-link">Coding</a>
+            </li>
+        
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </div>
+            
+        
+    </div>
+    <a href="#" id="top-button" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+</aside>
+
+        
+    
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-adsense/plugin.js"></script>
+        
+    
+
+    
+    <script type="text/javascript" src="../../_static/main.js"></script>
+    
+
+    </body>
+</html>
+
